@@ -1,4 +1,3 @@
-
 import { Evento } from "./evento.js";
 import { supabase } from "./supabase.js";
 
