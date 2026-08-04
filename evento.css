@@ -1,0 +1,113 @@
+* {
+
+  box-sizing: border-box;
+
+  margin: 0;
+
+  padding: 0;
+
+}
+
+
+html,
+body {
+
+  width: 100%;
+
+  min-height: 100%;
+
+}
+
+
+body {
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f7f9ff,
+      #eef2ff
+    );
+
+  color: #111827;
+
+  -webkit-font-smoothing:
+    antialiased;
+
+}
+
+
+#app {
+
+  width: 100%;
+
+  min-height: 100vh;
+
+}
+
+
+.evento-view {
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 24px;
+
+}
+
+
+.evento-card {
+
+  width: 100%;
+
+  max-width: 520px;
+
+  padding: 40px 30px;
+
+  border-radius: 24px;
+
+  background:
+    rgba(255, 255, 255, 0.92);
+
+  box-shadow:
+    0 20px 50px
+    rgba(31, 41, 55, 0.12);
+
+  text-align: center;
+
+}
+
+
+.evento-card h1 {
+
+  margin-bottom: 12px;
+
+  font-size: 32px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+
+}
+
+
+.evento-card p {
+
+  font-size: 16px;
+
+  line-height: 1.6;
+
+  color: #6b7280;
+
+}
