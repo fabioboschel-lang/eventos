@@ -9,7 +9,7 @@ const supabaseUrl =
 
 
 const supabaseKey =
-  "PEGÁ_ACÁ_TU_PUBLISHABLE_KEY";
+  "sb_publishable_3Vo6VOuDzVbN5355c9HeDA_1YwQPR6l";
 
 
 export const supabase =
