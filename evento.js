@@ -145,7 +145,7 @@ async function cargarEvento() {
 
   /*
    * partes[0] = evento
-   * partes[1] = public_id
+   * partes[1] = id
    */
 
 
@@ -161,7 +161,7 @@ async function cargarEvento() {
   }
 
 
-  const publicId =
+  const id =
     partes[1];
 
 
@@ -176,7 +176,7 @@ async function cargarEvento() {
     await supabase
       .from("Eventos")
       .select(`
-        public_id,
+        id,
         nombre,
         imagen,
         descripcion,
@@ -186,8 +186,8 @@ async function cargarEvento() {
         valor
       `)
       .eq(
-        "public_id",
-        publicId
+        "id",
+         id
       )
       .maybeSingle();
 
