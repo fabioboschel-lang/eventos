@@ -1,6 +1,64 @@
 import { supabase } from "./supabase.js";
 
 
+/*
+ * ============================================================
+ * PERSISTENCIA DEL USUARIO
+ * ============================================================
+ *
+ * Esta función se ejecuta al entrar a la plataforma.
+ *
+ * Si ya existe un ID:
+ *     no hace nada.
+ *
+ * Si no existe:
+ *     genera uno nuevo y lo guarda.
+ */
+
+function inicializarUsuarioLocal() {
+
+  const key =
+    "scannervybe-user-id";
+
+
+  const userId =
+    localStorage.getItem(key);
+
+
+  if (userId) {
+
+    return;
+
+  }
+
+
+  const nuevoUserId =
+    crypto.randomUUID();
+
+
+  localStorage.setItem(
+    key,
+    nuevoUserId
+  );
+
+}
+
+
+/*
+ * Inicializar inmediatamente
+ * el identificador del usuario.
+ */
+
+inicializarUsuarioLocal();
+
+
+
+/*
+ * ============================================================
+ * VISTA DEL EVENTO
+ * ============================================================
+ */
+
 export function Evento(app) {
 
   app.innerHTML = `
@@ -13,6 +71,7 @@ export function Evento(app) {
       >
         Cargando evento...
       </div>
+
 
       <section
         id="eventoContainer"
@@ -103,6 +162,13 @@ export function Evento(app) {
 }
 
 
+
+/*
+ * ============================================================
+ * CARGAR EVENTO
+ * ============================================================
+ */
+
 async function cargarEvento() {
 
   const loading =
@@ -110,15 +176,18 @@ async function cargarEvento() {
       "eventoLoading"
     );
 
+
   const container =
     document.getElementById(
       "eventoContainer"
     );
 
+
   const errorElement =
     document.getElementById(
       "eventoError"
     );
+
 
 
   /*
@@ -129,11 +198,11 @@ async function cargarEvento() {
     window.location.hash;
 
 
+
   /*
    * EJEMPLO:
    *
    * #/evento/550e8400-e29b-41d4-a716-446655440000
-   *
    */
 
 
@@ -141,6 +210,7 @@ async function cargarEvento() {
     hash
       .replace(/^#\/?/, "")
       .split("/");
+
 
 
   /*
@@ -161,12 +231,16 @@ async function cargarEvento() {
   }
 
 
+
   const id =
     partes[1];
 
 
+
   /*
+   * ==========================================================
    * BUSCAR EVENTO
+   * ==========================================================
    */
 
   const {
@@ -187,9 +261,10 @@ async function cargarEvento() {
       `)
       .eq(
         "id",
-         id
+        id
       )
       .maybeSingle();
+
 
 
   if (error) {
@@ -206,6 +281,7 @@ async function cargarEvento() {
   }
 
 
+
   if (!evento) {
 
     mostrarError();
@@ -215,13 +291,17 @@ async function cargarEvento() {
   }
 
 
+
   /*
+   * ==========================================================
    * RENDERIZAR EVENTO
+   * ==========================================================
    */
 
   document
     .getElementById("eventoImagen")
-    .src = evento.imagen;
+    .src =
+      evento.imagen;
 
 
   document
@@ -245,17 +325,24 @@ async function cargarEvento() {
   document
     .getElementById("eventoValor")
     .textContent =
-      `$${Number(evento.valor).toLocaleString(
+      `$${Number(
+        evento.valor
+      ).toLocaleString(
         "es-AR"
       )}`;
 
 
+
   /*
+   * ==========================================================
    * FECHA
+   * ==========================================================
    */
 
   const fecha =
-    new Date(evento.fecha);
+    new Date(
+      evento.fecha
+    );
 
 
   document
@@ -270,8 +357,11 @@ async function cargarEvento() {
       )}`;
 
 
+
   /*
+   * ==========================================================
    * REDES
+   * ==========================================================
    */
 
   const redes =
@@ -296,18 +386,198 @@ async function cargarEvento() {
   }
 
 
+
   /*
-   * MOSTRAR
+   * ==========================================================
+   * BOTÓN COMPRAR
+   * ==========================================================
+   *
+   * Acá NO generamos ningún usuario.
+   *
+   * Simplemente recuperamos el ID que la función
+   * de persistencia ya guardó.
+   */
+
+  const comprarBtn =
+    document.getElementById(
+      "comprarBtn"
+    );
+
+
+  comprarBtn.addEventListener(
+    "click",
+    async () => {
+
+
+      /*
+       * OBTENER ID DEL USUARIO
+       * DESDE LOCALSTORAGE
+       */
+
+      const userId =
+        localStorage.getItem(
+          "scannervybe-user-id"
+        );
+
+
+      if (!userId) {
+
+        console.error(
+          "No existe ID de usuario en localStorage."
+        );
+
+        return;
+
+      }
+
+
+
+      /*
+       * ID DEL EVENTO
+       */
+
+      const eventId =
+        evento.id;
+
+
+
+      /*
+       * PRECIO DEL EVENTO
+       */
+
+      const price =
+        Number(
+          evento.valor
+        );
+
+
+
+      /*
+       * VALIDAR PRECIO
+       */
+
+      if (
+        !Number.isFinite(price) ||
+        price <= 0
+      ) {
+
+        console.error(
+          "El precio del evento no es válido:",
+          evento.valor
+        );
+
+        return;
+
+      }
+
+
+
+      /*
+       * ENVIAR DATOS A LA EDGE FUNCTION
+       */
+
+      try {
+
+        const {
+          data,
+          error
+        } =
+          await supabase.functions.invoke(
+            "create-ticket-payment",
+            {
+              body: {
+
+                user_id:
+                  userId,
+
+                event_id:
+                  eventId,
+
+                price:
+                  price,
+
+              },
+
+            }
+          );
+
+
+        if (error) {
+
+          throw error;
+
+        }
+
+
+
+        /*
+         * MOSTRAR RESPUESTA
+         */
+
+        console.log(
+          "Preferencia creada:",
+          data
+        );
+
+
+
+        /*
+         * REDIRIGIR A MERCADO PAGO
+         */
+
+        if (
+          data &&
+          data.init_point
+        ) {
+
+          window.location.href =
+            data.init_point;
+
+        } else {
+
+          console.error(
+            "Mercado Pago no devolvió init_point."
+          );
+
+        }
+
+
+      } catch (error) {
+
+        console.error(
+          "Error creando preferencia:",
+          error
+        );
+
+      }
+
+    }
+  );
+
+
+
+  /*
+   * ==========================================================
+   * MOSTRAR EVENTO
+   * ==========================================================
    */
 
   loading.style.display =
     "none";
+
 
   container.style.display =
     "block";
 
 }
 
+
+
+/*
+ * ============================================================
+ * MOSTRAR ERROR
+ * ============================================================
+ */
 
 function mostrarError() {
 
@@ -316,10 +586,10 @@ function mostrarError() {
     .style.display =
       "none";
 
+
   document
     .getElementById("eventoError")
     .style.display =
       "block";
 
 }
-
