@@ -257,7 +257,8 @@ async function cargarEvento() {
         redes,
         ubicacion,
         fecha,
-        valor
+        valor,
+        color
       `)
       .eq(
         "id",
