@@ -5,14 +5,6 @@ import { supabase } from "./supabase.js";
  * ============================================================
  * PERSISTENCIA DEL USUARIO
  * ============================================================
- *
- * Esta función se ejecuta al entrar a la plataforma.
- *
- * Si ya existe un ID:
- *     no hace nada.
- *
- * Si no existe:
- *     genera uno nuevo y lo guarda.
  */
 
 function inicializarUsuarioLocal() {
@@ -43,11 +35,6 @@ function inicializarUsuarioLocal() {
 
 }
 
-
-/*
- * Inicializar inmediatamente
- * el identificador del usuario.
- */
 
 inicializarUsuarioLocal();
 
@@ -191,32 +178,19 @@ async function cargarEvento() {
 
 
   /*
+   * ==========================================================
    * OBTENER HASH
+   * ==========================================================
    */
 
   const hash =
     window.location.hash;
 
 
-
-  /*
-   * EJEMPLO:
-   *
-   * #/evento/550e8400-e29b-41d4-a716-446655440000
-   */
-
-
   const partes =
     hash
       .replace(/^#\/?/, "")
       .split("/");
-
-
-
-  /*
-   * partes[0] = evento
-   * partes[1] = id
-   */
 
 
   if (
@@ -229,7 +203,6 @@ async function cargarEvento() {
     return;
 
   }
-
 
 
   const id =
@@ -267,7 +240,6 @@ async function cargarEvento() {
       .maybeSingle();
 
 
-
   if (error) {
 
     console.error(
@@ -282,12 +254,42 @@ async function cargarEvento() {
   }
 
 
-
   if (!evento) {
 
     mostrarError();
 
     return;
+
+  }
+
+
+
+  /*
+   * ==========================================================
+   * APLICAR COLOR DEL EVENTO
+   * ==========================================================
+   *
+   * El valor viene directamente desde:
+   *
+   * Eventos.color
+   *
+   * Ejemplo:
+   *
+   * #ff0000
+   * #000000
+   * #f5f5f5
+   *
+   * Si por algún motivo no existe un color,
+   * se mantiene el fondo definido por CSS.
+   */
+
+  if (
+    evento.color &&
+    typeof evento.color === "string"
+  ) {
+
+    document.body.style.background =
+      evento.color;
 
   }
 
@@ -392,11 +394,6 @@ async function cargarEvento() {
    * ==========================================================
    * BOTÓN COMPRAR
    * ==========================================================
-   *
-   * Acá NO generamos ningún usuario.
-   *
-   * Simplemente recuperamos el ID que la función
-   * de persistencia ya guardó.
    */
 
   const comprarBtn =
@@ -495,9 +492,9 @@ async function cargarEvento() {
                   eventId,
 
                 price:
-                  price,
+                  price
 
-              },
+              }
 
             }
           );
