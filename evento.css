@@ -5,49 +5,67 @@
 }
 
 
-/* =========================
-   BASE
-   ========================= */
-
 html,
-body,
-#app {
-
+body {
   width: 100%;
   min-height: 100%;
+}
 
-  margin: 0;
-  padding: 0;
 
+body {
   font-family:
     Arial,
     Helvetica,
     sans-serif;
 
+  -webkit-font-smoothing:
+    antialiased;
+}
+
+
+#app {
+  width: 100%;
+  min-height: 100vh;
 }
 
 
 /* =========================
-   CONTENEDOR DE LA IMAGEN
+   CONTENEDOR DEL EVENTO
    ========================= */
 
-.evento-image-container {
+.evento-container {
 
   width: 100%;
+  max-width: 520px;
 
-  height: 50dvh;
+  min-height: 100vh;
 
-  margin: 0;
-  padding: 0;
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
 
   overflow: hidden;
-
 }
 
 
 /* =========================
    IMAGEN
    ========================= */
+
+.evento-image-container {
+
+  width: 100%;
+
+  height: 50%;
+
+  overflow: hidden;
+
+  flex-shrink: 0;
+}
+
 
 .evento-image {
 
@@ -56,11 +74,7 @@ body,
   width: 100%;
   height: 100%;
 
-  margin: 0;
-  padding: 0;
-
   object-fit: cover;
-
 }
 
 
@@ -70,18 +84,22 @@ body,
 
 .evento-name {
 
-  margin:
-    20px;
+  width: 100%;
 
-  font-size:
-    28px;
+  padding:
+    24px
+    20px
+    8px;
 
-  font-weight:
-    800;
+  font-size: 30px;
 
-  line-height:
-    1.2;
+  font-weight: 800;
 
+  line-height: 1.15;
+
+  color: #111827;
+
+  text-align: left;
 }
 
 
@@ -91,15 +109,20 @@ body,
 
 .evento-description {
 
-  margin:
-    0 20px 20px;
+  width: 100%;
 
-  font-size:
-    16px;
+  padding:
+    0
+    20px
+    20px;
 
-  line-height:
-    1.5;
+  font-size: 16px;
 
+  line-height: 1.5;
+
+  color: #4b5563;
+
+  text-align: left;
 }
 
 
@@ -109,15 +132,19 @@ body,
 
 .evento-data {
 
-  margin:
-    0 20px 10px;
+  width: 100%;
 
-  font-size:
-    15px;
+  padding:
+    8px
+    20px;
 
-  line-height:
-    1.4;
+  font-size: 16px;
 
+  line-height: 1.4;
+
+  color: #374151;
+
+  text-align: left;
 }
 
 
@@ -127,15 +154,20 @@ body,
 
 .evento-price {
 
-  margin:
-    18px 20px;
+  width: 100%;
 
-  font-size:
-    22px;
+  padding:
+    12px
+    20px
+    20px;
 
-  font-weight:
-    700;
+  font-size: 22px;
 
+  font-weight: 800;
+
+  color: #111827;
+
+  text-align: left;
 }
 
 
@@ -145,18 +177,18 @@ body,
 
 .evento-socials {
 
-  display:
-    block;
-
   margin:
-    0 20px 20px;
+    0
+    20px
+    20px;
 
-  font-size:
-    15px;
+  color: #4338ca;
 
-  text-decoration:
-    none;
+  font-size: 15px;
 
+  font-weight: 600;
+
+  text-decoration: none;
 }
 
 
@@ -166,72 +198,54 @@ body,
 
 .evento-buy-btn {
 
-  display:
-    block;
-
   width:
     calc(100% - 40px);
 
-  height:
-    58px;
+  height: 58px;
 
   margin:
-    10px 20px 30px;
+    0
+    20px
+    30px;
 
-  border:
-    none;
+  border: none;
 
-  border-radius:
-    15px;
+  border-radius: 16px;
 
   background:
-    #111827;
+    linear-gradient(
+      135deg,
+      #111827,
+      #1f2937
+    );
 
-  color:
-    #ffffff;
+  color: #ffffff;
 
-  font-size:
-    17px;
+  font-size: 17px;
 
-  font-weight:
-    700;
+  font-weight: 700;
 
-  cursor:
-    pointer;
+  cursor: pointer;
 
-  transition:
-    transform 0.15s ease,
-    opacity 0.15s ease;
-
-}
-
-
-.evento-buy-btn:active {
-
-  transform:
-    scale(0.98);
-
-  opacity:
-    0.9;
-
+  box-shadow:
+    0 10px 25px
+    rgba(17, 24, 39, 0.18);
 }
 
 
 /* =========================
-   CARGANDO
+   LOADING
    ========================= */
 
 .evento-loading {
 
-  padding:
-    30px 20px;
+  width: 100%;
 
-  text-align:
-    center;
+  padding: 40px 20px;
 
-  font-size:
-    16px;
+  text-align: center;
 
+  color: #374151;
 }
 
 
@@ -241,82 +255,25 @@ body,
 
 .evento-error {
 
-  padding:
-    30px 20px;
+  width: 100%;
 
-  text-align:
-    center;
+  padding: 40px 20px;
 
-  font-size:
-    16px;
+  text-align: center;
 
+  color: #dc2626;
 }
 
 
 /* =========================
-   MÓVILES
+   MOVIL
    ========================= */
 
-@media (max-width: 600px) {
+@media (max-width: 520px) {
 
-  .evento-image-container {
+  .evento-container {
 
-    height:
-      50dvh;
-
-  }
-
-
-  .evento-name {
-
-    margin:
-      18px;
-
-    font-size:
-      26px;
-
-  }
-
-
-  .evento-description {
-
-    margin:
-      0 18px 18px;
-
-  }
-
-
-  .evento-data {
-
-    margin:
-      0 18px 9px;
-
-  }
-
-
-  .evento-price {
-
-    margin:
-      16px 18px;
-
-  }
-
-
-  .evento-socials {
-
-    margin:
-      0 18px 18px;
-
-  }
-
-
-  .evento-buy-btn {
-
-    width:
-      calc(100% - 36px);
-
-    margin:
-      10px 18px 25px;
+    max-width: none;
 
   }
 
