@@ -1,3 +1,545 @@
+/* =========================================================
+   BASE
+   ========================================================= */
 
-* { box-sizing: border-box; margin: 0; padding: 0; } html, body { width: 100%; min-height: 100%; } body { font-family: Arial, Helvetica, sans-serif; background: linear-gradient( 145deg, #f7f9ff, #eef3ff, #f8faff ); color: #111827; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; } button, a { -webkit-tap-highlight-color: transparent; } button:focus, a:focus { outline: none; } #app { width: 100%; min-height: 100vh; } /* ========================= VISTA PRINCIPAL ========================= */ .evento-view { width: 100%; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 30px 16px 50px; } /* ========================= CONTENEDOR DEL EVENTO ========================= */ .evento-container { width: 100%; max-width: 620px; overflow: hidden; background: rgba(255, 255, 255, 0.96); border: 1px solid rgba(99, 102, 241, 0.10); border-radius: 28px; box-shadow: 0 25px 60px rgba(31, 41, 55, 0.13); } /* ========================= IMAGEN ========================= */ .evento-image-container { width: 100%; aspect-ratio: 16 / 10; overflow: hidden; background: #e5e7eb; } .evento-image { width: 100%; height: 100%; display: block; object-fit: cover; } /* ========================= CONTENIDO ========================= */ .evento-content { padding: 28px 24px 30px; } /* ========================= NOMBRE ========================= */ .evento-name { margin-bottom: 20px; font-size: clamp(28px, 7vw, 40px); line-height: 1.08; font-weight: 800; letter-spacing: -1px; color: #111827; } /* ========================= DATOS ========================= */ .evento-data { margin-bottom: 12px; padding: 13px 15px; border-radius: 14px; background: linear-gradient( 135deg, #f5f7ff, #eef2ff ); border: 1px solid rgba(79, 70, 229, 0.08); color: #4b5563; font-size: 15px; line-height: 1.5; } /* ========================= PRECIO ========================= */ .evento-price { margin: 20px 0; font-size: 30px; font-weight: 800; color: #4338ca; } /* ========================= DESCRIPCIÓN ========================= */ .evento-description { margin-top: 20px; margin-bottom: 22px; color: #4b5563; font-size: 16px; line-height: 1.7; white-space: pre-line; } /* ========================= REDES ========================= */ .evento-socials { display: inline-block; margin-bottom: 24px; color: #4f46e5; font-size: 15px; font-weight: 700; text-decoration: none; transition: opacity 0.18s ease; } .evento-socials:hover { opacity: 0.75; } /* ========================= BOTÓN DE COMPRA ========================= */ .evento-buy-btn { width: 100%; height: 60px; border: none; border-radius: 17px; background: linear-gradient( 135deg, #4f46e5, #6366f1 ); color: #ffffff; font-size: 18px; font-weight: 800; cursor: pointer; box-shadow: 0 12px 25px rgba(79, 70, 229, 0.25); transition: transform 0.18s ease, box-shadow 0.18s ease; } .evento-buy-btn:hover { transform: translateY(-1px); box-shadow: 0 16px 32px rgba(79, 70, 229, 0.30); } .evento-buy-btn:active { transform: scale(0.97); } /* ========================= CARGANDO ========================= */ .evento-loading { padding: 30px; color: #6b7280; font-size: 16px; text-align: center; } /* ========================= ERROR ========================= */ .evento-error { width: 100%; max-width: 500px; padding: 30px 24px; border-radius: 22px; background: rgba(255, 255, 255, 0.95); box-shadow: 0 20px 50px rgba(31, 41, 55, 0.10); color: #6b7280; font-size: 16px; text-align: center; } /* ========================= MÓVIL ========================= */ @media (max-width: 480px) { .evento-view { padding: 14px 10px 35px; } .evento-container { border-radius: 23px; } .evento-content { padding: 23px 18px 24px; } .evento-name { font-size: 29px; } .evento-price { font-size: 27px; } }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+
+html,
+body,
+#app {
+
+  width: 100%;
+  min-height: 100%;
+
+}
+
+
+body {
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  background:
+    #ffffff;
+
+  color:
+    #111827;
+
+  -webkit-font-smoothing:
+    antialiased;
+
+  overflow-x:
+    hidden;
+
+}
+
+
+button,
+a {
+
+  -webkit-tap-highlight-color:
+    transparent;
+
+}
+
+
+button:focus,
+a:focus {
+
+  outline:
+    none;
+
+}
+
+
+/* =========================================================
+   VISTA PRINCIPAL
+   ========================================================= */
+
+.evento-view {
+
+  width:
+    100%;
+
+  min-height:
+    100vh;
+
+  min-height:
+    100dvh;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    stretch;
+
+  background:
+    #ffffff;
+
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.evento-loading {
+
+  width:
+    100%;
+
+  min-height:
+    100vh;
+
+  min-height:
+    100dvh;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    30px;
+
+  font-size:
+    16px;
+
+  color:
+    #6b7280;
+
+}
+
+
+/* =========================================================
+   CONTENEDOR DE IMAGEN
+   ========================================================= */
+
+.evento-image-container {
+
+  width:
+    100%;
+
+  height:
+    100px;
+
+  flex:
+    0 0 100px;
+
+  overflow:
+    hidden;
+
+  background:
+    #eeeeee;
+
+}
+
+
+/* =========================================================
+   IMAGEN
+   ========================================================= */
+
+.evento-image {
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    cover;
+
+  object-position:
+    center;
+
+}
+
+
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+
+.evento-content {
+
+  width:
+    100%;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    stretch;
+
+}
+
+
+/* =========================================================
+   NOMBRE
+   ========================================================= */
+
+.evento-name {
+
+  width:
+    100%;
+
+  padding:
+    22px 20px 8px;
+
+  font-size:
+    28px;
+
+  line-height:
+    1.15;
+
+  font-weight:
+    800;
+
+  color:
+    #111827;
+
+  text-align:
+    left;
+
+}
+
+
+/* =========================================================
+   DESCRIPCIÓN
+   ========================================================= */
+
+.evento-description {
+
+  width:
+    100%;
+
+  padding:
+    0 20px 20px;
+
+  font-size:
+    16px;
+
+  line-height:
+    1.55;
+
+  color:
+    #4b5563;
+
+  white-space:
+    pre-wrap;
+
+}
+
+
+/* =========================================================
+   DATOS DEL EVENTO
+   ========================================================= */
+
+.evento-data {
+
+  width:
+    100%;
+
+  padding:
+    7px 20px;
+
+  font-size:
+    15px;
+
+  line-height:
+    1.4;
+
+  color:
+    #374151;
+
+}
+
+
+/* =========================================================
+   PRECIO
+   ========================================================= */
+
+.evento-price {
+
+  width:
+    100%;
+
+  padding:
+    14px 20px 20px;
+
+  font-size:
+    24px;
+
+  line-height:
+    1.2;
+
+  font-weight:
+    800;
+
+  color:
+    #111827;
+
+}
+
+
+/* =========================================================
+   REDES SOCIALES
+   ========================================================= */
+
+.evento-socials {
+
+  display:
+    inline-block;
+
+  width:
+    fit-content;
+
+  margin:
+    0 20px 22px;
+
+  font-size:
+    15px;
+
+  font-weight:
+    600;
+
+  color:
+    #4338ca;
+
+  text-decoration:
+    none;
+
+}
+
+
+.evento-socials:hover {
+
+  text-decoration:
+    underline;
+
+}
+
+
+/* =========================================================
+   BOTÓN COMPRAR
+   ========================================================= */
+
+.evento-buy-btn {
+
+  width:
+    calc(100% - 40px);
+
+  height:
+    58px;
+
+  margin:
+    0 20px 30px;
+
+  border:
+    none;
+
+  border-radius:
+    15px;
+
+  background:
+    #111827;
+
+  color:
+    #ffffff;
+
+  font-size:
+    17px;
+
+  font-weight:
+    700;
+
+  cursor:
+    pointer;
+
+  box-shadow:
+    0 10px 25px
+    rgba(17, 24, 39, 0.18);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease;
+
+}
+
+
+.evento-buy-btn:hover {
+
+  background:
+    #1f2937;
+
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 14px 30px
+    rgba(17, 24, 39, 0.22);
+
+}
+
+
+.evento-buy-btn:active {
+
+  transform:
+    scale(0.98);
+
+  box-shadow:
+    0 6px 15px
+    rgba(17, 24, 39, 0.16);
+
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.evento-error {
+
+  width:
+    100%;
+
+  min-height:
+    100vh;
+
+  min-height:
+    100dvh;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    30px;
+
+  text-align:
+    center;
+
+  font-size:
+    16px;
+
+  color:
+    #6b7280;
+
+}
+
+
+/* =========================================================
+   PANTALLAS PEQUEÑAS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .evento-image-container {
+
+    height:
+      100px;
+
+    flex-basis:
+      100px;
+
+  }
+
+
+  .evento-name {
+
+    padding:
+      20px 16px 8px;
+
+    font-size:
+      25px;
+
+  }
+
+
+  .evento-description {
+
+    padding:
+      0 16px 18px;
+
+    font-size:
+      15px;
+
+  }
+
+
+  .evento-data {
+
+    padding:
+      6px 16px;
+
+    font-size:
+      14px;
+
+  }
+
+
+  .evento-price {
+
+    padding:
+      12px 16px 18px;
+
+    font-size:
+      22px;
+
+  }
+
+
+  .evento-socials {
+
+    margin-left:
+      16px;
+
+    margin-right:
+      16px;
+
+  }
+
+
+  .evento-buy-btn {
+
+    width:
+      calc(100% - 32px);
+
+    margin-left:
+      16px;
+
+    margin-right:
+      16px;
+
+    margin-bottom:
+      24px;
+
+  }
+
+}
