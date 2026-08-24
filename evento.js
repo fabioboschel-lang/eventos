@@ -66,7 +66,9 @@ export function Evento(app) {
       style="display: none;"
     >
 
-      <div class="evento-image-container">
+      <div
+        class="evento-image-container"
+      >
 
         <img
           id="eventoImagen"
@@ -96,23 +98,9 @@ export function Evento(app) {
 
 
       <div
-        id="eventoUbicacion"
-        class="evento-data"
-      ></div>
-
-
-      <div
         id="eventoValor"
         class="evento-price"
       ></div>
-
-
-      <a
-        id="eventoRedes"
-        class="evento-socials"
-        target="_blank"
-        rel="noopener noreferrer"
-      ></a>
 
 
       <button
@@ -137,7 +125,6 @@ export function Evento(app) {
   </main>
 
 `;
-
   cargarEvento();
 
 }
