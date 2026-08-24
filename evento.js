@@ -60,11 +60,17 @@ export function Evento(app) {
     </div>
 
 
-    <img
-      id="eventoImagen"
-      class="evento-image"
-      alt="Imagen del evento"
+    <div
+      class="evento-image-container"
     >
+
+      <img
+        id="eventoImagen"
+        class="evento-image"
+        alt="Imagen del evento"
+      >
+
+    </div>
 
 
     <h1
@@ -125,7 +131,6 @@ export function Evento(app) {
   </main>
 
 `;
-
 
   cargarEvento();
 
