@@ -1,5 +1,5 @@
 import { supabase } from "./supabase.js";
-
+import { cargarSocioStyle } from "./sociostyle.js";
 
 /*
  * ============================================================
