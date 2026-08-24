@@ -2,13 +2,6 @@
    BASE
    ========================================================= */
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-
 html,
 body,
 #app {
@@ -16,10 +9,8 @@ body,
   width: 100%;
   min-height: 100%;
 
-}
-
-
-body {
+  margin: 0;
+  padding: 0;
 
   font-family:
     Arial,
@@ -28,15 +19,6 @@ body {
 
   background:
     #ffffff;
-
-  color:
-    #111827;
-
-  -webkit-font-smoothing:
-    antialiased;
-
-  overflow-x:
-    hidden;
 
 }
 
@@ -82,9 +64,6 @@ a:focus {
 
   align-items:
     stretch;
-
-  background:
-    #ffffff;
 
 }
 
@@ -455,7 +434,7 @@ a:focus {
 
 
 /* =========================================================
-   PANTALLAS PEQUEÑAS
+   MOBILE
    ========================================================= */
 
 @media (max-width: 480px) {
