@@ -60,64 +60,70 @@ export function Evento(app) {
     </div>
 
 
-    <div
-      class="evento-image-container"
+    <section
+      id="eventoContainer"
+      class="evento-container"
+      style="display: none;"
     >
 
-      <img
-        id="eventoImagen"
-        class="evento-image"
-        alt="Imagen del evento"
+      <div class="evento-image-container">
+
+        <img
+          id="eventoImagen"
+          class="evento-image"
+          alt="Imagen del evento"
+        >
+
+      </div>
+
+
+      <h1
+        id="eventoNombre"
+        class="evento-name"
+      ></h1>
+
+
+      <p
+        id="eventoDescripcion"
+        class="evento-description"
+      ></p>
+
+
+      <div
+        id="eventoFecha"
+        class="evento-data"
+      ></div>
+
+
+      <div
+        id="eventoUbicacion"
+        class="evento-data"
+      ></div>
+
+
+      <div
+        id="eventoValor"
+        class="evento-price"
+      ></div>
+
+
+      <a
+        id="eventoRedes"
+        class="evento-socials"
+        target="_blank"
+        rel="noopener noreferrer"
+      ></a>
+
+
+      <button
+        id="comprarBtn"
+        class="evento-buy-btn"
+        type="button"
       >
+        Comprar entrada
+      </button>
 
-    </div>
-
-
-    <h1
-      id="eventoNombre"
-      class="evento-name"
-    ></h1>
-
-
-    <p
-      id="eventoDescripcion"
-      class="evento-description"
-    ></p>
-
-
-    <div
-      id="eventoFecha"
-      class="evento-data"
-    ></div>
-
-
-    <div
-      id="eventoUbicacion"
-      class="evento-data"
-    ></div>
-
-
-    <div
-      id="eventoValor"
-      class="evento-price"
-    ></div>
-
-
-    <a
-      id="eventoRedes"
-      class="evento-socials"
-      target="_blank"
-      rel="noopener noreferrer"
-    ></a>
-
-
-    <button
-      id="comprarBtn"
-      class="evento-buy-btn"
-      type="button"
-    >
-      Comprar entrada
-    </button>
+    </section>
 
 
     <div
