@@ -50,7 +50,7 @@ export function Evento(app) {
 
   app.innerHTML = `
 
-  <main class="evento-view">
+  <main>
 
     <div
       id="eventoLoading"
@@ -60,71 +60,58 @@ export function Evento(app) {
     </div>
 
 
-    <div
-      class="evento-image-container"
+    <img
+      id="eventoImagen"
+      class="evento-image"
+      alt="Imagen del evento"
     >
 
-      <img
-        id="eventoImagen"
-        class="evento-image"
-        alt="Imagen del evento"
-      >
 
-    </div>
+    <h1
+      id="eventoNombre"
+      class="evento-name"
+    ></h1>
+
+
+    <p
+      id="eventoDescripcion"
+      class="evento-description"
+    ></p>
 
 
     <div
-      class="evento-content"
+      id="eventoFecha"
+      class="evento-data"
+    ></div>
+
+
+    <div
+      id="eventoUbicacion"
+      class="evento-data"
+    ></div>
+
+
+    <div
+      id="eventoValor"
+      class="evento-price"
+    ></div>
+
+
+    <a
+      id="eventoRedes"
+      class="evento-socials"
+      target="_blank"
+      rel="noopener noreferrer"
+    ></a>
+
+
+    <button
+      id="comprarBtn"
+      class="evento-buy-btn"
+      type="button"
     >
-
-      <h1
-        id="eventoNombre"
-        class="evento-name"
-      ></h1>
-
-
-      <div
-        id="eventoFecha"
-        class="evento-data"
-      ></div>
-
-
-      <div
-        id="eventoUbicacion"
-        class="evento-data"
-      ></div>
-
-
-      <div
-        id="eventoValor"
-        class="evento-price"
-      ></div>
-
-
-      <p
-        id="eventoDescripcion"
-        class="evento-description"
-      ></p>
-
-
-      <a
-        id="eventoRedes"
-        class="evento-socials"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-      </a>
-
-
-      <button
-        id="comprarBtn"
-        class="evento-buy-btn"
-        type="button"
-      >
-        Comprar entrada
-      </button>
-
-    </div>
+      Comprar entrada
+    </button>
 
 
     <div
