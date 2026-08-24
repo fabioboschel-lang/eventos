@@ -1,8 +1,19 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =========================
+   BASE
+   ========================= */
+
 html,
 body,
 #app {
 
-  width: 10%;
+  width: 100%;
   min-height: 100%;
 
   margin: 0;
@@ -12,6 +23,25 @@ body,
     Arial,
     Helvetica,
     sans-serif;
+
+}
+
+
+/* =========================
+   CONTENEDOR DE LA IMAGEN
+   ========================= */
+
+.evento-image-container {
+
+  width: 100%;
+
+  height: 50dvh;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
 }
 
 
@@ -24,14 +54,13 @@ body,
   display: block;
 
   width: 100%;
-
-  height: 50%;
- 
-
-  object-fit: cover;
+  height: 100%;
 
   margin: 0;
   padding: 0;
+
+  object-fit: cover;
+
 }
 
 
@@ -42,15 +71,17 @@ body,
 .evento-name {
 
   margin:
-    20px
-    20px
-    12px;
+    20px;
 
-  font-size: 28px;
+  font-size:
+    28px;
 
-  font-weight: 800;
+  font-weight:
+    800;
 
-  line-height: 1.15;
+  line-height:
+    1.2;
+
 }
 
 
@@ -61,46 +92,50 @@ body,
 .evento-description {
 
   margin:
-    0
-    20px
-    18px;
+    0 20px 20px;
 
-  font-size: 16px;
+  font-size:
+    16px;
 
-  line-height: 1.5;
+  line-height:
+    1.5;
+
 }
 
 
 /* =========================
-   DATOS DEL EVENTO
+   DATOS
    ========================= */
 
 .evento-data {
 
   margin:
-    0
-    20px
-    10px;
+    0 20px 10px;
 
-  font-size: 15px;
+  font-size:
+    15px;
 
-  line-height: 1.4;
+  line-height:
+    1.4;
+
 }
 
 
 /* =========================
-   VALOR
+   PRECIO
    ========================= */
 
 .evento-price {
 
   margin:
-    18px
-    20px;
+    18px 20px;
 
-  font-size: 22px;
+  font-size:
+    22px;
 
-  font-weight: 700;
+  font-weight:
+    700;
+
 }
 
 
@@ -110,16 +145,18 @@ body,
 
 .evento-socials {
 
-  display: block;
+  display:
+    block;
 
   margin:
-    0
-    20px
-    20px;
+    0 20px 20px;
 
-  font-size: 15px;
+  font-size:
+    15px;
 
-  text-decoration: none;
+  text-decoration:
+    none;
+
 }
 
 
@@ -129,20 +166,23 @@ body,
 
 .evento-buy-btn {
 
-  display: block;
+  display:
+    block;
 
-  width: calc(100% - 40px);
+  width:
+    calc(100% - 40px);
 
-  height: 58px;
+  height:
+    58px;
 
   margin:
-    10px
-    20px
-    30px;
+    10px 20px 30px;
 
-  border: none;
+  border:
+    none;
 
-  border-radius: 15px;
+  border-radius:
+    15px;
 
   background:
     #111827;
@@ -150,15 +190,19 @@ body,
   color:
     #ffffff;
 
-  font-size: 17px;
+  font-size:
+    17px;
 
-  font-weight: 700;
+  font-weight:
+    700;
 
-  cursor: pointer;
+  cursor:
+    pointer;
 
   transition:
     transform 0.15s ease,
     opacity 0.15s ease;
+
 }
 
 
@@ -169,6 +213,7 @@ body,
 
   opacity:
     0.9;
+
 }
 
 
@@ -178,11 +223,15 @@ body,
 
 .evento-loading {
 
-  padding: 30px 20px;
+  padding:
+    30px 20px;
 
-  text-align: center;
+  text-align:
+    center;
 
-  font-size: 16px;
+  font-size:
+    16px;
+
 }
 
 
@@ -192,33 +241,82 @@ body,
 
 .evento-error {
 
-  padding: 30px 20px;
+  padding:
+    30px 20px;
 
-  text-align: center;
+  text-align:
+    center;
 
-  font-size: 16px;
+  font-size:
+    16px;
+
 }
 
 
 /* =========================
-   MOBILE
+   MÓVILES
    ========================= */
 
 @media (max-width: 600px) {
 
-  .evento-image {
+  .evento-image-container {
 
-    height: 50vh;
-    height: 50dvh;
+    height:
+      50dvh;
 
   }
 
 
   .evento-name {
 
-    margin-top: 18px;
+    margin:
+      18px;
 
-    font-size: 26px;
+    font-size:
+      26px;
+
+  }
+
+
+  .evento-description {
+
+    margin:
+      0 18px 18px;
+
+  }
+
+
+  .evento-data {
+
+    margin:
+      0 18px 9px;
+
+  }
+
+
+  .evento-price {
+
+    margin:
+      16px 18px;
+
+  }
+
+
+  .evento-socials {
+
+    margin:
+      0 18px 18px;
+
+  }
+
+
+  .evento-buy-btn {
+
+    width:
+      calc(100% - 36px);
+
+    margin:
+      10px 18px 25px;
 
   }
 
