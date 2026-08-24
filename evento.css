@@ -1,13 +1,8 @@
-/* =========================
-   BASE
-   ========================= */
-
 html,
 body,
 #app {
 
   width: 100%;
-
   min-height: 100%;
 
   margin: 0;
@@ -24,17 +19,16 @@ body,
    IMAGEN
    ========================= */
 
-#eventoImagen {
+.evento-image {
 
   display: block;
 
   width: 100%;
 
-  height: 10%;
+  height: 50vh;
+  height: 50dvh;
 
   object-fit: cover;
-
-  object-position: center;
 
   margin: 0;
   padding: 0;
@@ -45,10 +39,10 @@ body,
    NOMBRE
    ========================= */
 
-#eventoNombre {
+.evento-name {
 
   margin:
-    24px
+    20px
     20px
     12px;
 
@@ -64,12 +58,12 @@ body,
    DESCRIPCIÓN
    ========================= */
 
-#eventoDescripcion {
+.evento-description {
 
   margin:
     0
     20px
-    20px;
+    18px;
 
   font-size: 16px;
 
@@ -78,10 +72,10 @@ body,
 
 
 /* =========================
-   FECHA
+   DATOS DEL EVENTO
    ========================= */
 
-#eventoFecha {
+.evento-data {
 
   margin:
     0
@@ -89,21 +83,8 @@ body,
     10px;
 
   font-size: 15px;
-}
 
-
-/* =========================
-   UBICACIÓN
-   ========================= */
-
-#eventoUbicacion {
-
-  margin:
-    0
-    20px
-    10px;
-
-  font-size: 15px;
+  line-height: 1.4;
 }
 
 
@@ -111,24 +92,23 @@ body,
    VALOR
    ========================= */
 
-#eventoValor {
+.evento-price {
 
   margin:
-    0
-    20px
+    18px
     20px;
 
-  font-size: 20px;
+  font-size: 22px;
 
   font-weight: 700;
 }
 
 
 /* =========================
-   REDES SOCIALES
+   REDES
    ========================= */
 
-#eventoRedes {
+.evento-socials {
 
   display: block;
 
@@ -147,12 +127,11 @@ body,
    BOTÓN COMPRAR
    ========================= */
 
-#comprarBtn {
+.evento-buy-btn {
 
   display: block;
 
-  width:
-    calc(100% - 40px);
+  width: calc(100% - 40px);
 
   height: 58px;
 
@@ -163,25 +142,41 @@ body,
 
   border: none;
 
-  border-radius: 14px;
+  border-radius: 15px;
 
-  background: #111827;
+  background:
+    #111827;
 
-  color: #ffffff;
+  color:
+    #ffffff;
 
   font-size: 17px;
 
   font-weight: 700;
 
   cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+
+.evento-buy-btn:active {
+
+  transform:
+    scale(0.98);
+
+  opacity:
+    0.9;
 }
 
 
 /* =========================
-   LOADING
+   CARGANDO
    ========================= */
 
-#eventoLoading {
+.evento-loading {
 
   padding: 30px 20px;
 
@@ -195,7 +190,7 @@ body,
    ERROR
    ========================= */
 
-#eventoError {
+.evento-error {
 
   padding: 30px 20px;
 
@@ -206,45 +201,24 @@ body,
 
 
 /* =========================
-   MOVILES
+   MOBILE
    ========================= */
 
 @media (max-width: 600px) {
 
-  #eventoImagen {
+  .evento-image {
 
-    width: 100%;
-
-    height: 500px;
-
-    object-fit: cover;
+    height: 50vh;
+    height: 50dvh;
 
   }
 
 
-  #eventoNombre {
+  .evento-name {
 
-    font-size: 25px;
+    margin-top: 18px;
 
-    margin-top: 20px;
-
-  }
-
-
-  #eventoDescripcion {
-
-    font-size: 15px;
-
-  }
-
-
-  #comprarBtn {
-
-    width:
-      calc(100% - 32px);
-
-    margin-left: 16px;
-    margin-right: 16px;
+    font-size: 26px;
 
   }
 
