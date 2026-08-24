@@ -125,6 +125,7 @@ export function Evento(app) {
   </main>
 
 `;
+  cargarSocioStyle();
   cargarEvento();
 
 }
