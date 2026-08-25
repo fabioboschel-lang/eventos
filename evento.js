@@ -1,6 +1,7 @@
 import { supabase } from "./supabase.js";
 import { cargarSocioStyle } from "./sociostyle.js";
 
+
 /*
  * ============================================================
  * PERSISTENCIA DEL USUARIO
@@ -46,87 +47,116 @@ inicializarUsuarioLocal();
  * ============================================================
  */
 
-export function Evento(app) {
+export async function Evento(app) {
 
   app.innerHTML = `
 
-  <main>
-
-    <div
-      id="eventoLoading"
-      class="evento-loading"
-    >
-      Cargando evento...
-    </div>
-
-
-    <section
-      id="eventoContainer"
-      class="evento-container"
-      style="display: none;"
-    >
+    <main>
 
       <div
-        class="evento-image-container"
+        id="eventoLoading"
+        class="evento-loading"
       >
-
-        <img
-          id="eventoImagen"
-          class="evento-image"
-          alt="Imagen del evento"
-        >
-
+        Cargando evento...
       </div>
 
 
-      <h1
-        id="eventoNombre"
-        class="evento-name"
-      ></h1>
-
-
-      <p
-        id="eventoDescripcion"
-        class="evento-description"
-      ></p>
-
-
-      <div
-        id="eventoFecha"
-        class="evento-data"
-      ></div>
-
-
-      <div
-        id="eventoValor"
-        class="evento-price"
-      ></div>
-
-
-      <button
-        id="comprarBtn"
-        class="evento-buy-btn"
-        type="button"
+      <section
+        id="eventoContainer"
+        class="evento-container"
+        style="display: none;"
       >
-        Comprar entrada
-      </button>
 
-    </section>
+        <div
+          class="evento-image-container"
+        >
+
+          <img
+            id="eventoImagen"
+            class="evento-image"
+            alt="Imagen del evento"
+          >
+
+        </div>
 
 
-    <div
-      id="eventoError"
-      class="evento-error"
-      style="display: none;"
-    >
-      No se pudo encontrar este evento.
-    </div>
+        <h1
+          id="eventoNombre"
+          class="evento-name"
+        ></h1>
 
-  </main>
 
-`;
-  cargarSocioStyle();
-  cargarEvento();
+        <p
+          id="eventoDescripcion"
+          class="evento-description"
+        ></p>
+
+
+        <div
+          id="eventoFecha"
+          class="evento-data"
+        ></div>
+
+
+        <div
+          id="eventoValor"
+          class="evento-price"
+        ></div>
+
+
+        <button
+          id="comprarBtn"
+          class="evento-buy-btn"
+          type="button"
+        >
+          Comprar entrada
+        </button>
+
+      </section>
+
+
+      <div
+        id="eventoError"
+        class="evento-error"
+        style="display: none;"
+      >
+        No se pudo encontrar este evento.
+      </div>
+
+    </main>
+
+  `;
+
+
+  /*
+   * ==========================================================
+   * CARGAR ESTILO Y EVENTO
+   * ==========================================================
+   *
+   * Primero se obtiene y aplica sociostyle.
+   *
+   * Después se carga y presenta el evento.
+   *
+   * De esta manera la interfaz no se muestra antes
+   * de que su configuración visual haya sido aplicada.
+   */
+
+  try {
+
+    await cargarSocioStyle();
+
+    await cargarEvento();
+
+  } catch (error) {
+
+    console.error(
+      "Error inicializando evento:",
+      error
+    );
+
+    mostrarError();
+
+  }
 
 }
 
@@ -149,12 +179,6 @@ async function cargarEvento() {
   const container =
     document.getElementById(
       "eventoContainer"
-    );
-
-
-  const errorElement =
-    document.getElementById(
-      "eventoError"
     );
 
 
@@ -209,17 +233,15 @@ async function cargarEvento() {
         nombre,
         imagen,
         descripcion,
-        redes,
-        ubicacion,
         fecha,
-        valor,
-        color
+        valor
       `)
       .eq(
         "id",
         id
       )
       .maybeSingle();
+
 
 
   if (error) {
@@ -248,38 +270,7 @@ async function cargarEvento() {
 
   /*
    * ==========================================================
-   * APLICAR COLOR DEL EVENTO
-   * ==========================================================
-   *
-   * El valor viene directamente desde:
-   *
-   * Eventos.color
-   *
-   * Ejemplo:
-   *
-   * #ff0000
-   * #000000
-   * #f5f5f5
-   *
-   * Si por algún motivo no existe un color,
-   * se mantiene el fondo definido por CSS.
-   */
-
-  if (
-    evento.color &&
-    typeof evento.color === "string"
-  ) {
-
-    document.body.style.background =
-      evento.color;
-
-  }
-
-
-
-  /*
-   * ==========================================================
-   * RENDERIZAR EVENTO
+   * RENDERIZAR IMAGEN
    * ==========================================================
    */
 
@@ -289,11 +280,25 @@ async function cargarEvento() {
       evento.imagen;
 
 
+
+  /*
+   * ==========================================================
+   * RENDERIZAR NOMBRE
+   * ==========================================================
+   */
+
   document
     .getElementById("eventoNombre")
     .textContent =
       evento.nombre;
 
+
+
+  /*
+   * ==========================================================
+   * RENDERIZAR DESCRIPCIÓN
+   * ==========================================================
+   */
 
   document
     .getElementById("eventoDescripcion")
@@ -301,26 +306,10 @@ async function cargarEvento() {
       evento.descripcion;
 
 
-  document
-    .getElementById("eventoUbicacion")
-    .textContent =
-      `📍 ${evento.ubicacion}`;
-
-
-  document
-    .getElementById("eventoValor")
-    .textContent =
-      `$${Number(
-        evento.valor
-      ).toLocaleString(
-        "es-AR"
-      )}`;
-
-
 
   /*
    * ==========================================================
-   * FECHA
+   * RENDERIZAR FECHA
    * ==========================================================
    */
 
@@ -345,30 +334,18 @@ async function cargarEvento() {
 
   /*
    * ==========================================================
-   * REDES
+   * RENDERIZAR VALOR
    * ==========================================================
    */
 
-  const redes =
-    document.getElementById(
-      "eventoRedes"
-    );
-
-
-  if (evento.redes) {
-
-    redes.href =
-      evento.redes;
-
-    redes.textContent =
-      "Ver redes sociales";
-
-  } else {
-
-    redes.style.display =
-      "none";
-
-  }
+  document
+    .getElementById("eventoValor")
+    .textContent =
+      `$${Number(
+        evento.valor
+      ).toLocaleString(
+        "es-AR"
+      )}`;
 
 
 
@@ -391,7 +368,6 @@ async function cargarEvento() {
 
       /*
        * OBTENER ID DEL USUARIO
-       * DESDE LOCALSTORAGE
        */
 
       const userId =
@@ -453,7 +429,9 @@ async function cargarEvento() {
 
 
       /*
-       * ENVIAR DATOS A LA EDGE FUNCTION
+       * ======================================================
+       * CREAR PREFERENCIA
+       * ======================================================
        */
 
       try {
@@ -502,7 +480,9 @@ async function cargarEvento() {
 
 
         /*
-         * REDIRIGIR A MERCADO PAGO
+         * ====================================================
+         * REDIRECCIÓN A MERCADO PAGO
+         * ====================================================
          */
 
         if (
@@ -540,6 +520,9 @@ async function cargarEvento() {
    * ==========================================================
    * MOSTRAR EVENTO
    * ==========================================================
+   *
+   * El estilo de sociostyle ya fue aplicado antes de llegar
+   * a este punto.
    */
 
   loading.style.display =
@@ -561,15 +544,31 @@ async function cargarEvento() {
 
 function mostrarError() {
 
-  document
-    .getElementById("eventoLoading")
-    .style.display =
+  const loading =
+    document.getElementById(
+      "eventoLoading"
+    );
+
+
+  const errorElement =
+    document.getElementById(
+      "eventoError"
+    );
+
+
+  if (loading) {
+
+    loading.style.display =
       "none";
 
+  }
 
-  document
-    .getElementById("eventoError")
-    .style.display =
+
+  if (errorElement) {
+
+    errorElement.style.display =
       "block";
+
+  }
 
 }
