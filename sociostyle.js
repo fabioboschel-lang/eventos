@@ -1,28 +1,8 @@
 import { supabase } from "./supabase.js";
 
+import { planillas }
+  from "./planillas/index.js";
 
-/*
- * ============================================================
- * SOCIO STYLE
- * ============================================================
- *
- * Obtiene el ID del evento desde la URL.
- *
- * Ejemplo:
- *
- * #/evento/8
- *
- * Luego busca en "sociostyle" la fila cuyo
- * "eventid" coincida con ese ID.
- *
- * De esa fila obtiene:
- *
- * - color de fondo
- * - planilla
- * - tipografia
- *
- * y aplica el estilo correspondiente a la página.
- */
 
 
 /*
@@ -48,6 +28,10 @@ function obtenerEventId() {
     !partes[1]
   ) {
 
+    console.error(
+      "No se pudo obtener el eventid desde la URL."
+    );
+
     return null;
 
   }
@@ -58,33 +42,142 @@ function obtenerEventId() {
 }
 
 
+
 /*
  * ============================================================
- * OBTENER ESTILO DEL EVENTO
+ * APLICAR COLOR DE FONDO
  * ============================================================
  */
 
-async function obtenerSocioStyle(eventId) {
+function aplicarColorFondo(color) {
+
+  document.body.style.backgroundColor =
+    color;
+
+}
+
+
+
+/*
+ * ============================================================
+ * APLICAR TIPOGRAFÍA
+ * ============================================================
+ */
+
+function aplicarTipografia(tipografia) {
+
+  document.body.style.fontFamily =
+    tipografia;
+
+
+  document.documentElement.style
+    .fontFamily =
+      tipografia;
+
+
+  document
+    .querySelectorAll("*")
+    .forEach(
+      (elemento) => {
+
+        elemento.style.fontFamily =
+          tipografia;
+
+      }
+    );
+
+}
+
+
+
+/*
+ * ============================================================
+ * EJECUTAR PLANILLA
+ * ============================================================
+ */
+
+function ejecutarPlanilla(numero) {
+
+  const funcionPlanilla =
+    planillas[
+      Number(numero)
+    ];
+
+
+  if (
+    typeof funcionPlanilla !==
+    "function"
+  ) {
+
+    console.error(
+      "No existe la planilla:",
+      numero
+    );
+
+    return;
+
+  }
+
+
+  funcionPlanilla();
+
+}
+
+
+
+/*
+ * ============================================================
+ * CARGAR SOCIOSTYLE
+ * ============================================================
+ */
+
+export async function cargarSocioStyle() {
+
+  /*
+   * OBTENER EVENTID
+   */
+
+  const eventId =
+    obtenerEventId();
+
+
+  if (!eventId) {
+
+    return;
+
+  }
+
+
+
+  /*
+   * ==========================================================
+   * CONSULTAR CONFIGURACIÓN
+   * ==========================================================
+   */
 
   const {
-    data,
+    data: estilo,
     error
   } =
     await supabase
       .from("sociostyle")
       .select(`
+        eventid,
         "color de fondo",
         planilla,
-        tipografia,
-        eventid
+        tipografia
       `)
       .eq(
         "eventid",
         eventId
       )
-      .limit(1)
       .maybeSingle();
 
+
+
+  /*
+   * ERROR
+   */
 
   if (error) {
 
@@ -93,244 +186,92 @@ async function obtenerSocioStyle(eventId) {
       error
     );
 
-    return null;
+    return;
 
   }
 
 
-  if (!data) {
 
-    console.warn(
-      "No existe configuración de estilo para el evento:",
+  /*
+   * ==========================================================
+   * CONFIGURACIÓN NO ENCONTRADA
+   * ==========================================================
+   */
+
+  if (!estilo) {
+
+    console.error(
+      "No existe configuración sociostyle para el evento:",
       eventId
     );
 
-    return null;
-
-  }
-
-
-  return data;
-
-}
-
-
-/*
- * ============================================================
- * PLANILLAS
- * ============================================================
- *
- * Cada número representa una estructura visual diferente.
- *
- * La función recibe el número almacenado en la base de datos
- * y aplica las condiciones correspondientes.
- */
-
-function aplicarPlanilla(planilla) {
-
-  const numero =
-    Number(planilla);
-
-
-  /*
-   * ==========================================================
-   * PLANILLA 1
-   * ==========================================================
-   *
-   * Imagen:
-   * 100% ancho
-   * 50% altura del viewport
-   *
-   * Luego:
-   * Nombre
-   * Descripción
-   * Fecha
-   * Botón
-   */
-
-  if (numero === 1) {
-
-    document.documentElement.style
-      .setProperty(
-        "--evento-imagen-ancho",
-        "100%"
-      );
-
-
-    document.documentElement.style
-      .setProperty(
-        "--evento-imagen-alto",
-        "50dvh"
-      );
-
-
-    document.documentElement.style
-      .setProperty(
-        "--evento-contenido-direccion",
-        "column"
-      );
-
     return;
 
   }
 
 
-  /*
-   * ==========================================================
-   * PLANILLA 2
-   * ==========================================================
-   *
-   * Misma estructura.
-   *
-   * Imagen:
-   * 50% del ancho.
-   */
-
-  if (numero === 2) {
-
-    document.documentElement.style
-      .setProperty(
-        "--evento-imagen-ancho",
-        "50%"
-      );
-
-
-    document.documentElement.style
-      .setProperty(
-        "--evento-imagen-alto",
-        "50dvh"
-      );
-
-
-    document.documentElement.style
-      .setProperty(
-        "--evento-contenido-direccion",
-        "column"
-      );
-
-    return;
-
-  }
-
 
   /*
    * ==========================================================
-   * PLANILLA DESCONOCIDA
+   * EXTRAER VALORES
    * ==========================================================
    */
 
-  console.warn(
-    "Planilla no reconocida:",
-    planilla
-  );
-
-}
-
-
-/*
- * ============================================================
- * APLICAR ESTILO
- * ============================================================
- */
-
-function aplicarEstilo(estilo) {
-
-  /*
-   * COLOR DE FONDO
-   */
-
-  const color =
+  const colorFondo =
     estilo["color de fondo"];
 
-
-  if (color) {
-
-    document.documentElement.style
-      .setProperty(
-        "--evento-color-fondo",
-        color
-      );
-
-    document.body.style.backgroundColor =
-      color;
-
-  }
-
-
-  /*
-   * TIPOGRAFÍA
-   */
 
   const tipografia =
     estilo.tipografia;
 
 
-  if (tipografia) {
+  const numeroPlanilla =
+    estilo.planilla;
 
-    document.documentElement.style
-      .setProperty(
-        "--evento-tipografia",
-        tipografia
-      );
-
-    document.body.style.fontFamily =
-      tipografia;
-
-  }
 
 
   /*
-   * PLANILLA
+   * ==========================================================
+   * APLICAR COLOR
+   * ==========================================================
    */
 
-  aplicarPlanilla(
-    estilo.planilla
+  aplicarColorFondo(
+    colorFondo
+  );
+
+
+
+  /*
+   * ==========================================================
+   * APLICAR TIPOGRAFÍA
+   * ==========================================================
+   */
+
+  aplicarTipografia(
+    tipografia
+  );
+
+
+
+  /*
+   * ==========================================================
+   * APLICAR PLANILLA
+   * ==========================================================
+   */
+
+  ejecutarPlanilla(
+    numeroPlanilla
   );
 
 }
+
 
 
 /*
  * ============================================================
- * FUNCIÓN PRINCIPAL
+ * INICIALIZAR
  * ============================================================
  */
 
-export async function cargarSocioStyle() {
-
-  const eventId =
-    obtenerEventId();
-
-
-  if (!eventId) {
-
-    console.error(
-      "No se pudo obtener el ID del evento desde la URL."
-    );
-
-    return null;
-
-  }
-
-
-  const estilo =
-    await obtenerSocioStyle(
-      eventId
-    );
-
-
-  if (!estilo) {
-
-    return null;
-
-  }
-
-
-  aplicarEstilo(
-    estilo
-  );
-
-
-  return estilo;
-
-}
+cargarSocioStyle();
