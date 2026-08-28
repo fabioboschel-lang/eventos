@@ -56,16 +56,6 @@ export function aplicarPlanilla3() {
 
   /*
    * ============================================================
-   * FONDO
-   * ============================================================
-   */
-
-  document.body.style.background =
-    "#ff0000";
-
-
-  /*
-   * ============================================================
    * IMAGEN
    * ============================================================
    */
@@ -272,22 +262,16 @@ export function aplicarPlanilla3() {
       {
 
         width:
-          "100%",
-
-        height:
-          "70px",
+          "90%",
 
         marginTop:
           "20px",
 
-        fontSize:
-          "20px",
+        marginLeft:
+          "5%",
 
-        padding:
-          "15px 30px",
-
-        boxSizing:
-          "border-box"
+        marginRight:
+          "5%"
 
       }
     );
