@@ -12,4 +12,6 @@ export const planillas = {
 
   3: aplicarPlanilla3
 
+  
+
 };
