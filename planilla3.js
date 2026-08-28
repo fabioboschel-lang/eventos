@@ -262,7 +262,7 @@ export function aplicarPlanilla3() {
       {
 
         width:
-          "90%",
+          "50%",
 
         marginTop:
           "20px",
