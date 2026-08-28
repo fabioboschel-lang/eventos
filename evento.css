@@ -40,7 +40,7 @@ body {
 
   min-height: 100vh;
 
-  background: #ffffff;
+  background: transparent;
 
   display: flex;
   flex-direction: column;
