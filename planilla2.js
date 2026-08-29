@@ -202,3 +202,88 @@ export function aplicarPlanilla2() {
 
         marginTop:
           "8px",
+
+        marginLeft:
+          "5%",
+
+        marginRight:
+          "5%",
+
+        textAlign:
+          "left"
+
+      }
+    );
+
+  }
+
+
+  /*
+   * ============================================================
+   * DESCRIPCIÓN
+   * ============================================================
+   */
+
+  if (descripcion) {
+
+    Object.assign(
+      descripcion.style,
+      {
+
+        width:
+          "90%",
+
+        marginTop:
+          "16px",
+
+        marginLeft:
+          "5%",
+
+        marginRight:
+          "5%",
+
+        textAlign:
+          "left"
+
+      }
+    );
+
+  }
+
+
+  /*
+   * ============================================================
+   * BOTÓN DE COMPRA
+   * ============================================================
+   */
+
+  if (comprar) {
+
+    Object.assign(
+      comprar.style,
+      {
+
+        width:
+          "100%",
+
+        height:
+          "70px",
+
+        marginTop:
+          "20px",
+
+        fontSize:
+          "20px",
+
+        padding:
+          "15px 30px",
+
+        boxSizing:
+          "border-box"
+
+      }
+    );
+
+  }
+
+}
