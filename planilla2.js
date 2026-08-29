@@ -1,23 +1,5 @@
 export function aplicarPlanilla2() {
 
-  /*
-   * ============================================================
-   * PLANILLA 3
-   * ============================================================
-   *
-   * Orden:
-   *
-   * 1. Imagen
-   * 2. Nombre
-   * 3. Fecha
-   * 4. Ubicación
-   * 5. Descripción
-   * 6. Botón de compra
-   *
-   * ============================================================
-   */
-
-
   const imagenContainer =
     document.querySelector(
       ".evento-image-container"
@@ -56,8 +38,25 @@ export function aplicarPlanilla2() {
 
   /*
    * ============================================================
+   * FONDO
+   * ============================================================
+   */
+
+  document.body.style.background =
+    "#ff0000";
+
+
+  /*
+   * ============================================================
    * IMAGEN
    * ============================================================
+   *
+   * Igual que planilla 3:
+   * 90% de ancho
+   * 10% desde el techo
+   * 5% de margen lateral
+   *
+   * Pero ahora la imagen es circular.
    */
 
   if (imagenContainer) {
@@ -67,22 +66,22 @@ export function aplicarPlanilla2() {
       {
 
         width:
-          "90%",
+          "50%",
+
+        aspectRatio:
+          "1 / 1",
 
         marginTop:
           "10vh",
 
         marginLeft:
-          "5%",
+          "auto",
 
         marginRight:
-          "5%",
-
-        aspectRatio:
-          "1 / 1",
+          "auto",
 
         borderRadius:
-          "12px",
+          "50%",
 
         overflow:
           "hidden"
@@ -109,7 +108,10 @@ export function aplicarPlanilla2() {
           "block",
 
         objectFit:
-          "cover"
+          "cover",
+
+        borderRadius:
+          "50%"
 
       }
     );
@@ -200,82 +202,3 @@ export function aplicarPlanilla2() {
 
         marginTop:
           "8px",
-
-        marginLeft:
-          "5%",
-
-        marginRight:
-          "5%",
-
-        textAlign:
-          "left"
-
-      }
-    );
-
-  }
-
-
-  /*
-   * ============================================================
-   * DESCRIPCIÓN
-   * ============================================================
-   */
-
-  if (descripcion) {
-
-    Object.assign(
-      descripcion.style,
-      {
-
-        width:
-          "90%",
-
-        marginTop:
-          "16px",
-
-        marginLeft:
-          "5%",
-
-        marginRight:
-          "5%",
-
-        textAlign:
-          "left"
-
-      }
-    );
-
-  }
-
-
-  /*
-   * ============================================================
-   * BOTÓN DE COMPRA
-   * ============================================================
-   */
-
-  if (comprar) {
-
-    Object.assign(
-      comprar.style,
-      {
-
-        width:
-          "90%",
-
-        marginTop:
-          "20px",
-
-        marginLeft:
-          "5%",
-
-        marginRight:
-          "5%"
-
-      }
-    );
-
-  }
-
-}

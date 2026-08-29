@@ -1,23 +1,5 @@
 export function aplicarPlanilla1() {
 
-  /*
-   * ============================================================
-   * PLANILLA 3
-   * ============================================================
-   *
-   * Orden:
-   *
-   * 1. Imagen
-   * 2. Nombre
-   * 3. Fecha
-   * 4. Ubicación
-   * 5. Descripción
-   * 6. Botón de compra
-   *
-   * ============================================================
-   */
-
-
   const imagenContainer =
     document.querySelector(
       ".evento-image-container"
@@ -56,6 +38,16 @@ export function aplicarPlanilla1() {
 
   /*
    * ============================================================
+   * FONDO
+   * ============================================================
+   */
+
+  document.body.style.background =
+    "#ff0000";
+
+
+  /*
+   * ============================================================
    * IMAGEN
    * ============================================================
    */
@@ -67,16 +59,16 @@ export function aplicarPlanilla1() {
       {
 
         width:
-          "90%",
+          "100%",
 
         marginTop:
-          "10vh",
+          "0",
 
         marginLeft:
-          "5%",
+          "0",
 
         marginRight:
-          "5%",
+          "0",
 
         aspectRatio:
           "1 / 1",
@@ -262,16 +254,22 @@ export function aplicarPlanilla1() {
       {
 
         width:
-          "90%",
+          "100%",
+
+        height:
+          "70px",
 
         marginTop:
           "20px",
 
-        marginLeft:
-          "5%",
+        fontSize:
+          "20px",
 
-        marginRight:
-          "5%"
+        padding:
+          "15px 30px",
+
+        boxSizing:
+          "border-box"
 
       }
     );
