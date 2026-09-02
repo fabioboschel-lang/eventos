@@ -284,7 +284,7 @@ const evento =
        */
 
       const eventId =
-        evento.id;
+  id;
 
 
 
