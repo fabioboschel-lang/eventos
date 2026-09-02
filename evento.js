@@ -1,7 +1,6 @@
 import { HTMLbdc } from "./HTMLbdc.js";
-import { supabase } from "./supabase.js";
+import { obtenerEvento } from "./eventosDB.js";
 import { cargarSocioStyle } from "./sociostyle.js";
-
 
 
 
