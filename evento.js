@@ -154,7 +154,7 @@ if (!id) {
 const evento =
   await obtenerEvento(id);
 
-  }
+  
 
 
 
