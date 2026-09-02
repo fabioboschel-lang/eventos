@@ -3,42 +3,6 @@ import { supabase } from "./supabase.js";
 import { cargarSocioStyle } from "./sociostyle.js";
 
 
-/*
- * ============================================================
- * PERSISTENCIA DEL USUARIO
- * ============================================================
- */
-
-function inicializarUsuarioLocal() {
-
-  const key =
-    "scannervybe-user-id";
-
-
-  const userId =
-    localStorage.getItem(key);
-
-
-  if (userId) {
-
-    return;
-
-  }
-
-
-  const nuevoUserId =
-    crypto.randomUUID();
-
-
-  localStorage.setItem(
-    key,
-    nuevoUserId
-  );
-
-}
-
-
-inicializarUsuarioLocal();
 
 
 
