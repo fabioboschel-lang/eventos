@@ -173,56 +173,8 @@ async function cargarEvento() {
     partes[1];
 
 
-
-  /*
-   * ==========================================================
-   * BUSCAR EVENTO
-   * ==========================================================
-   */
-
-  const {
-    data: evento,
-    error
-  } =
-    await supabase
-      .from("Eventos")
-      .select(`
-        id,
-        nombre,
-        imagen,
-        descripcion,
-        fecha,
-        valor
-      `)
-      .eq(
-        "id",
-        id
-      )
-      .maybeSingle();
-
-
-
-  if (error) {
-
-    console.error(
-      "Error obteniendo evento:",
-      error
-    );
-
-    mostrarError();
-
-    return;
-
-  }
-
-
-  if (!evento) {
-
-    mostrarError();
-
-    return;
-
-  }
+const evento =
+  await obtenerEvento(eventoID);
 
 
 
