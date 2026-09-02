@@ -1,3 +1,4 @@
+import { obtenerEventoID } from "./eventoID.js";
 import { HTMLbdc } from "./HTMLbdc.js";
 import { obtenerEvento } from "./eventosDB.js";
 import { cargarSocioStyle } from "./sociostyle.js";
@@ -139,42 +140,21 @@ async function cargarEvento() {
       "eventoContainer"
     );
 
+const id =
+  obtenerEventoID();
 
+if (!id) {
 
-  /*
-   * ==========================================================
-   * OBTENER HASH
-   * ==========================================================
-   */
+  mostrarError();
 
-  const hash =
-    window.location.hash;
+  return;
 
-
-  const partes =
-    hash
-      .replace(/^#\/?/, "")
-      .split("/");
-
-
-  if (
-    partes[0] !== "evento" ||
-    !partes[1]
-  ) {
-
-    mostrarError();
-
-    return;
-
-  }
-
-
-  const id =
-    partes[1];
-
+}
 
 const evento =
-  await obtenerEvento(eventoID);
+  await obtenerEvento(id);
+
+  }
 
 
 
