@@ -1,3 +1,4 @@
+import { comprarHTML } from "./HTMLbdc.js";
 import { supabase } from "./supabase.js";
 import { cargarSocioStyle } from "./sociostyle.js";
 
