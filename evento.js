@@ -105,13 +105,7 @@ export async function Evento(app) {
         ></div>
 
 
-        <button
-          id="comprarBtn"
-          class="evento-buy-btn"
-          type="button"
-        >
-          Comprar entrada
-        </button>
+        ${comprarHTML}
 
       </section>
 
