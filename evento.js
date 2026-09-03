@@ -24,7 +24,7 @@ app.innerHTML = `
     id="eventoLoading"  
     class="evento-loading"  
   >  
-    Cargando evento...  
+    Cargando AAAAAAAAAAAAA...  
   </div>  
 
 
