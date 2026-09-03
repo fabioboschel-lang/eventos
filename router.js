@@ -53,27 +53,7 @@ export { supabase };
 
 function iniciarApp() {
 
-  const hash =
-    window.location.hash;
-
-
-  /*
-   * Ejemplo:
-   *
-   * #/evento/550e8400-e29b-41d4-a716-446655440000
-   *
-   */
-
-  const partes =
-    hash
-      .replace(/^#\/?/, "")
-      .split("/");
-
-
-  if (
-    partes[0] === "evento" &&
-    partes[1]
-  ) {
+   {
 
     navigate("evento");
 
