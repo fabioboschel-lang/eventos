@@ -193,7 +193,7 @@ error
 } =
 await supabase
 .from("Eventos")
-.select(  id,   nombre,   imagen,   descripcion,   fecha,   valor  )
+.select("id,   nombre,   imagen,   descripcion,   fecha,   valor")
 .eq(
 "id",
 id
