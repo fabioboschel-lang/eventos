@@ -1,4 +1,4 @@
-impor { Evento } from "./evento.js";
+import { Evento } from "./evento.js";
 import { supabase } from "./supabase.js";
 
 
