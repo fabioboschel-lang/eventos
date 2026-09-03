@@ -224,7 +224,7 @@ evento.fecha
 document
 .getElementById("eventoFecha")
 .textContent =
-📅 ${fecha.toLocaleString(   "es-AR",   {   dateStyle: "full",   timeStyle: "short"   }   )};
+`📅 ${fecha.toLocaleString("es-AR", { dateStyle: "full", timeStyle: "short" })}`;
 
 /*
 
@@ -239,7 +239,7 @@ RENDERIZAR VALOR
 document
 .getElementById("eventoValor")
 .textContent =
-$${Number(   evento.valor   ).toLocaleString(   "es-AR"   )};
+`$${Number(evento.valor).toLocaleString("es-AR")}`;
 
 /*
 
@@ -255,6 +255,8 @@ const comprarBtn =
 document.getElementById(
 "comprarBtn"
 );
+
+if (comprarBtn) {
 
 comprarBtn.addEventListener(
 "click",
@@ -407,6 +409,8 @@ id;
 }
 
 );
+
+}
 
 /*
 
