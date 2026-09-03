@@ -1,4 +1,4 @@
-import { HTMLbdc } from "./HTMLbdc.js";
+impor { HTMLbdc } from "./HTMLbdc.js";
 import { supabase } from "./supabase.js";
 import { cargarSocioStyle } from "./sociostyle.js";
 
@@ -68,7 +68,13 @@ export async function Evento(app) {
       ></div>  
 
 
-      ${HTMLbdc}  
+      <button
+    id="comprarBtn"
+    class="evento-buy-btn"
+    type="button"
+  >
+    Comprar entrada
+  </button>
 
     </section>  
 
