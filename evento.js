@@ -281,10 +281,8 @@ new Date(
 evento.fecha
 );
 
-document
-.getElementById("eventoFecha")
-.textContent =
-📅 ${fecha.toLocaleString(   "es-AR",   {   dateStyle: "full",   timeStyle: "short"   }   )};
+document.getElementById("eventoFecha").textContent =
+ 📅 ${fecha.toLocaleString("es-AR", { dateStyle: "full", timeStyle: "short" })};
 
 /*
 
