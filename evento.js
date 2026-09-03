@@ -1,5 +1,5 @@
 import { supabase } from "./supabase.js";
-import { obtenerEventoID } from "./eventoID.js";
+
 import { HTMLbdc } from "./HTMLbdc.js";
 import { obtenerEvento } from "./eventosDB.js";
 import { cargarSocioStyle } from "./sociostyle.js";
@@ -141,8 +141,21 @@ async function cargarEvento() {
       "eventoContainer"
     );
 
+const hash =
+  window.location.hash;
+
+
+const partes =
+  hash
+    .replace(/^#\/?/, "")
+    .split("/");
+
+
 const id =
-  obtenerEventoID();
+  partes[0] === "evento" &&
+  partes[1]
+    ? partes[1]
+    : null;
 
 if (!id) {
 
