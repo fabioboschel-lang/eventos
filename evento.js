@@ -1,3 +1,4 @@
+import { obtenerUsuarioID } from "./usuarioID.js";
 import { supabase } from "./supabase.js";
 import { obtenerEventoID } from "./eventoID.js";
 import { HTMLbdc } from "./HTMLbdc.js";
@@ -87,6 +88,11 @@ app.innerHTML = `
 </main>
 
 `;
+
+
+
+
+obtenerUsuarioID();
 
 /*
 
