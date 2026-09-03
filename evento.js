@@ -1,4 +1,4 @@
-impor { HTMLbdc } from "./HTMLbdc.js";
+import { HTMLbdc } from "./HTMLbdc.js";
 import { supabase } from "./supabase.js";
 import { cargarSocioStyle } from "./sociostyle.js";
 
