@@ -160,7 +160,7 @@ window.location.hash;
 
 const partes =
 hash
-.replace(/^#/?/, "")
+.replace(/^#\/?/, "")
 .split("/");
 
 if (
