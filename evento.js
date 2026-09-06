@@ -166,6 +166,8 @@ return;
 
 const evento =
 await obtenerEvento(id);
+const tickets =
+  await obtenerTickets(id);
 
 /*
 
