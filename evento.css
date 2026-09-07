@@ -192,45 +192,8 @@ body {
 }
 
 
-/* =========================
-   BOTÓN COMPRAR
-   ========================= */
 
-.evento-buy-btn {
 
-  width:
-    calc(100% - 40px);
-
-  height: 58px;
-
-  margin:
-    0
-    20px
-    30px;
-
-  border: none;
-
-  border-radius: 16px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #111827,
-      #1f2937
-    );
-
-  color: #ffffff;
-
-  font-size: 17px;
-
-  font-weight: 700;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 10px 25px
-    rgba(17, 24, 39, 0.18);
-}
 
 
 /* =========================
