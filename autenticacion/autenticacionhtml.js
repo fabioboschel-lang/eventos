@@ -8,7 +8,7 @@ export const autenticacion = `
   <p
     class="autenticacion-texto"
   >
-    Debes continuar con Google para realizar una compra.
+    Debes continuar con Google para realizar una 1compra.
   </p>
 
   <div
