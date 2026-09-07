@@ -56,10 +56,7 @@ export function inicializarCompra(  eventId, userId ) {
       ======================================================
       */
 
-      const userId =
-        localStorage.getItem(
-          "scannervybe-user-id"
-        );
+      const userId = userId;
 
 
       if (!userId) {
@@ -80,7 +77,7 @@ export function inicializarCompra(  eventId, userId ) {
       */
 
       const eventId =
-        id;
+        eventId;
 
 
       /*
