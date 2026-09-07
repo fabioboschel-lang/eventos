@@ -61,21 +61,23 @@ export function inicializarCompra(  eventId, userId ) {
       ======================================================
       */
 
-      const userId = userId;
-
-
       if (!userId) {
 
-        console.error(
-          "No existe ID de usuario en localStorage."
-        );
+  const autenticacion =
+    document.getElementById(
+      "autenticacion"
+    );
 
-        return;
+  if (autenticacion) {
 
-      }
+    autenticacion.style.display =
+      "block";
 
+  }
 
-      /*
+  return;
+
+}
       ======================================================
       ID DEL EVENTO
       ======================================================
