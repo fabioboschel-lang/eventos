@@ -1,6 +1,6 @@
 
 import {
-  HTMLautenticacion
+  autenticacion
 } from "./autenticacionhtml.js";
 
 import {
