@@ -118,7 +118,7 @@ app.innerHTML = `
 
 
 
-const userID = obtenerUsuarioID();
+const userId = obtenerUsuarioID();
 
 /*
 
@@ -179,7 +179,7 @@ document.getElementById(
 "eventoContainer"
 );
 
-const id =
+const eventId =
 obtenerEventoID();
 
 if (!id) {
@@ -199,7 +199,7 @@ const tickets =
   
 cargarDatos(evento);
 
-inicializarCompra( evento, id);
+inicializarCompra(  eventId, userId );
 
 inicializarGoogle();
 
