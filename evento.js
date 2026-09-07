@@ -1,3 +1,12 @@
+
+import {
+  HTMLautenticacion
+} from "./autenticacionhtml.js";
+
+import {
+  inicializarGoogle
+} from "./google.js";
+
 import { cargarDatos } from "./cargardatos.js";
 
 import { inicializarCompra } from "./LOGICbdc.js";
