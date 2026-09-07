@@ -307,9 +307,7 @@ async () => {
    * ID DEL EVENTO  
    */  
 
-  const eventId =
-
-id;
+  const eventId = id;
 
 /*  
    * PRECIO DEL EVENTO  
