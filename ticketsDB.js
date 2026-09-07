@@ -11,8 +11,15 @@ CANTIDADES SELECCIONADAS
 Ejemplo:
 
 {
-  General: 2,
-  VIP: 3
+  General: {
+    valor: 2000,
+    cantidad: 2
+  },
+
+  VIP: {
+    valor: 5000,
+    cantidad: 3
+  }
 }
 
 ============================================================
@@ -187,14 +194,22 @@ export async function obtenerTickets(eventoID) {
     /*
     ========================================================
 
-    CANTIDAD INICIAL
+    DATOS INICIALES DE LA SELECCION
 
     ========================================================
     */
 
     cantidadesSeleccionadas[
       tipo
-    ] = 0;
+    ] = {
+
+      valor:
+        Number(valor),
+
+      cantidad:
+        0
+
+    };
 
 
     /*
@@ -364,7 +379,8 @@ export async function obtenerTickets(eventoID) {
       () => {
 
         if (
-          cantidadesSeleccionadas[tipo] <= 0
+          cantidadesSeleccionadas[tipo]
+            .cantidad <= 0
         ) {
 
           return;
@@ -372,11 +388,13 @@ export async function obtenerTickets(eventoID) {
         }
 
 
-        cantidadesSeleccionadas[tipo]--;
+        cantidadesSeleccionadas[tipo]
+          .cantidad--;
 
 
         numeroCantidad.textContent =
-          cantidadesSeleccionadas[tipo];
+          cantidadesSeleccionadas[tipo]
+            .cantidad;
 
       }
     );
@@ -394,11 +412,13 @@ export async function obtenerTickets(eventoID) {
       "click",
       () => {
 
-        cantidadesSeleccionadas[tipo]++;
+        cantidadesSeleccionadas[tipo]
+          .cantidad++;
 
 
         numeroCantidad.textContent =
-          cantidadesSeleccionadas[tipo];
+          cantidadesSeleccionadas[tipo]
+            .cantidad;
 
       }
     );
@@ -486,7 +506,7 @@ OBTENER CANTIDADES SELECCIONADAS
 ============================================================
 
 Devuelve una copia del objeto para utilizarlo
-desde evento.js.
+desde otros archivos.
 
 ============================================================
 */
