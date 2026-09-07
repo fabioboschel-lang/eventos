@@ -8,7 +8,7 @@ HTML AUTENTICACIÓN
 */
 
 
-export const HTMLautenticacion = `
+export const autenticacion = `
 
 <section
   id="autenticacion"
