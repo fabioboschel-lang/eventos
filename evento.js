@@ -1,3 +1,5 @@
+import { inicializarCompra } from "./LOGICbdc.js";
+
 import { obtenerUsuarioID } from "./usuarioID.js";
 
 import { supabase } from "./supabase.js";
@@ -36,7 +38,7 @@ app.innerHTML = `
     id="eventoLoading"  
     class="evento-loading"  
   >  
-    Cargando evento...  
+    Cargando H2O...  
   </div>  
 
 
@@ -177,8 +179,11 @@ return;
 
 const evento =
 await obtenerEvento(id);
+  
 const tickets =
   await obtenerTickets(id);
+
+  inicializarCompra( evento, id);
 
 /*
 
