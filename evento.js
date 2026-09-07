@@ -118,7 +118,7 @@ app.innerHTML = `
 
 
 
-obtenerUsuarioID();
+const userID = obtenerUsuarioID();
 
 /*
 
