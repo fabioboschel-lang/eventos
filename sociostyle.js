@@ -1,7 +1,7 @@
 import { supabase } from "./supabase.js";
 
 import { planillas }
-  from "./index.js";
+  from "./planillas/index.js";
 
 
 
