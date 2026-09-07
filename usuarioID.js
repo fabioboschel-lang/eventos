@@ -1,60 +1,49 @@
-/*
-============================================================
-
-ID DE USUARIO DEL DISPOSITIVO
-
-============================================================
-*/
+import { supabase } from "./supabase.js";
 
 export function obtenerUsuarioID() {
 
   const clave =
-    "scannervybe-user-id";
+    "sb-qexgbswdbwlpydolpcll-auth-token";
 
-
-  /*
-  ==========================================================
-
-  BUSCAR ID EXISTENTE
-
-  ==========================================================
-  */
-
-  let userId =
+  const datos =
     localStorage.getItem(
       clave
     );
 
+  if (!datos) {
 
-  /*
-  ==========================================================
-
-  SI NO EXISTE → CREAR UNO
-
-  ==========================================================
-  */
-
-  if (!userId) {
-
-    userId =
-      crypto.randomUUID();
-
-    localStorage.setItem(
-      clave,
-      userId
-    );
+    return null;
 
   }
 
+  try {
 
-  /*
-  ==========================================================
+    const session =
+      JSON.parse(
+        datos
+      );
 
-  DEVOLVER ID
+    if (
+      !session ||
+      !session.user ||
+      !session.user.id
+    ) {
 
-  ==========================================================
-  */
+      return null;
 
-  return userId;
+    }
+
+    return session.user.id;
+
+  } catch (error) {
+
+    console.error(
+      "Error leyendo sesión de Supabase:",
+      error
+    );
+
+    return null;
+
+  }
 
 }
