@@ -98,6 +98,8 @@ app.innerHTML = `
 
     ${HTMLbdc}  
 
+    ${autenticacion}
+
   </section>  
 
 
