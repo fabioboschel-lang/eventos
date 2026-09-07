@@ -40,7 +40,7 @@ app.innerHTML = `
     id="eventoLoading"  
     class="evento-loading"  
   >  
-    Cargando ORO...  
+    Cargando RORO...  
   </div>  
 
 
