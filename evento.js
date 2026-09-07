@@ -1,11 +1,11 @@
 
 import {
   autenticacion
-} from "./autenticacionhtml.js";
+} from "./autenticacion/autenticacionhtml.js";
 
 import {
   inicializarGoogle
-} from "./google.js";
+} from "./autenticacion/google.js";
 
 import { cargarDatos } from "./cargardatos.js";
 
