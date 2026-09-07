@@ -1,13 +1,3 @@
-/*
-
-==========================================================
-
-HTML AUTENTICACIÓN
-
-==========================================================
-*/
-
-
 export const autenticacion = `
 
 <div
@@ -15,13 +5,11 @@ export const autenticacion = `
   class="autenticacion"
 >
 
-
   <p
     class="autenticacion-texto"
   >
     Debes continuar con Google para realizar una compra.
   </p>
-
 
   <div
     class="autenticacion-boton-container"
@@ -36,7 +24,6 @@ export const autenticacion = `
     </button>
 
   </div>
-
 
 </div>
 
