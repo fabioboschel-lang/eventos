@@ -40,7 +40,7 @@ app.innerHTML = `
     id="eventoLoading"  
     class="evento-loading"  
   >  
-    Cargando MERCURIO...  
+    Cargando elio...  
   </div>  
 
 
