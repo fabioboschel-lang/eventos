@@ -1,10 +1,20 @@
-import { obtenerTickets } from "./ticketsDB.js";
 import { obtenerUsuarioID } from "./usuarioID.js";
+
 import { supabase } from "./supabase.js";
+
 import { obtenerEventoID } from "./eventoID.js";
+
 import { HTMLbdc } from "./HTMLbdc.js";
+
 import { obtenerEvento } from "./eventosDB.js";
+
 import { cargarSocioStyle } from "./sociostyle.js";
+
+import {
+  obtenerTickets,
+  obtenerCantidadesSeleccionadas
+} from "./ticketsDB.js";
+
 
 /*
 
