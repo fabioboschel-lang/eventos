@@ -1,12 +1,6 @@
-/*
-
-==========================================================
-
-AUTENTICACIÓN
-
-==========================================================
-*/
-
+/* ==========================================================
+   CONTENEDOR GENERAL DE AUTENTICACIÓN
+========================================================== */
 
 .autenticacion {
 
@@ -27,73 +21,50 @@ AUTENTICACIÓN
 
   gap: 25px;
 
-  padding: 25px;
+  padding: 30px;
 
   box-sizing: border-box;
 
-  background:
-    rgba(0, 0, 0, 0.55);
+  background: #ffffff;
 
   z-index: 9999;
+
+  border-radius: 0;
 
 }
 
 
-/*
-
-==========================================================
-
-TEXTO
-
-==========================================================
-*/
-
+/* ==========================================================
+   TEXTO
+========================================================== */
 
 .autenticacion-texto {
 
-  width: 100%;
-  max-width: 420px;
-
   margin: 0;
 
-  padding: 25px;
+  padding: 0;
+
+  width: 100%;
+  max-width: 350px;
 
   box-sizing: border-box;
 
   text-align: center;
 
-  font-size: 20px;
+  font-size: 19px;
 
   font-weight: 600;
 
   line-height: 1.4;
 
-  color: #856404;
-
-  background:
-    #fff3cd;
-
-  border:
-    1px solid #ffe69c;
-
-  border-radius: 14px;
-
-  box-shadow:
-    0 10px 30px
-    rgba(0, 0, 0, 0.20);
+  color: #333333;
 
 }
 
 
-/*
-
-==========================================================
-
-CONTENEDOR DEL BOTÓN
-
-==========================================================
-*/
-
+/* ==========================================================
+   CONTENEDOR DEL BOTÓN
+========================================================== */
 
 .autenticacion-boton-container {
 
@@ -105,31 +76,23 @@ CONTENEDOR DEL BOTÓN
 }
 
 
-/*
-
-==========================================================
-
-BOTÓN GOOGLE
-
-==========================================================
-*/
-
+/* ==========================================================
+   BOTÓN GOOGLE
+========================================================== */
 
 .google-btn {
 
-  min-width: 240px;
+  min-width: 250px;
 
-  padding: 14px 24px;
+  padding: 15px 25px;
 
   border: none;
 
   border-radius: 10px;
 
-  background:
-    #ffffff;
+  background: #38bdf8;
 
-  color:
-    #202124;
+  color: #ffffff;
 
   font-size: 16px;
 
@@ -138,51 +101,27 @@ BOTÓN GOOGLE
   cursor: pointer;
 
   box-shadow:
-    0 8px 25px
-    rgba(0, 0, 0, 0.20);
+    0 5px 15px
+    rgba(0, 0, 0, 0.15);
 
   transition:
     transform 0.15s ease,
-    box-shadow 0.15s ease;
+    background 0.15s ease;
 
 }
-
-
-/*
-
-==========================================================
-
-HOVER
-
-==========================================================
-*/
 
 
 .google-btn:hover {
 
-  transform:
-    translateY(-2px);
+  background: #0ea5e9;
 
-  box-shadow:
-    0 12px 30px
-    rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
 
 }
 
 
-/*
-
-==========================================================
-
-ACTIVE
-
-==========================================================
-*/
-
-
 .google-btn:active {
 
-  transform:
-    translateY(0);
+  transform: translateY(0);
 
 }
