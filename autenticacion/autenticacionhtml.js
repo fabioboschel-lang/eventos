@@ -10,19 +10,34 @@ HTML AUTENTICACIÓN
 
 export const autenticacion = `
 
-<section
+<div
   id="autenticacion"
   class="autenticacion"
 >
 
-  <button
-    id="googleBtn"
-    class="google-btn"
-    type="button"
-  >
-    Continuar con Google
-  </button>
 
-</section>
+  <p
+    class="autenticacion-texto"
+  >
+    Debes continuar con Google para realizar una compra.
+  </p>
+
+
+  <div
+    class="autenticacion-boton-container"
+  >
+
+    <button
+      id="googleBtn"
+      class="google-btn"
+      type="button"
+    >
+      Continuar con Google
+    </button>
+
+  </div>
+
+
+</div>
 
 `;
