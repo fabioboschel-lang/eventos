@@ -196,9 +196,13 @@ await obtenerEvento(id);
 const tickets =
   await obtenerTickets(id);
 
-  inicializarCompra( evento, id);
-
+  
 cargarDatos(evento);
+
+inicializarCompra( evento, id);
+
+inicializarGoogle();
+
 
 /*
 
