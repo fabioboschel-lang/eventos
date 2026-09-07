@@ -1,4 +1,9 @@
+
 import { supabase } from "./supabase.js";
+
+import {
+  obtenerCantidadesSeleccionadas
+} from "./ticketsDB.js";
 
 /*
 ============================================================
