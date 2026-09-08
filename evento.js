@@ -1,5 +1,9 @@
 
 import {
+  authInicializada
+} from "./Usuariossupabase.js";
+
+import {
   autenticacion
 } from "./autenticacion/autenticacionhtml.js";
 
@@ -118,7 +122,7 @@ app.innerHTML = `
 
 
 
-const userId = obtenerUsuarioID();
+
 
 /*
 
@@ -178,6 +182,10 @@ const container =
 document.getElementById(
 "eventoContainer"
 );
+
+
+await authInicializada;
+
 
 const userId = obtenerUsuarioID();
 
