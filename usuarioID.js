@@ -3,7 +3,7 @@ import {  usuariosSupabase } from "./Usuariossupabase.js";
 export function obtenerUsuarioID() {
 
   const clave =
-    "sb-qexgbswdbwlpydolpcll-auth-token";
+    "sb-uumcsdpfggtdinhvhvqy-auth-token";
 
   const datos =
     localStorage.getItem(
