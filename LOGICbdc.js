@@ -77,11 +77,7 @@ export function inicializarCompra(  eventId, userId ) {
 
   return;
 
-}
-      ======================================================
-      ID DEL EVENTO
-      ======================================================
-      */
+}     
 
       const eventId =
         eventId;
