@@ -1,4 +1,4 @@
-import { supabase } from "./supabase.js";
+import {  usuariosSupabase } from "../Usuariossupabase.js";
 
 export function obtenerUsuarioID() {
 
