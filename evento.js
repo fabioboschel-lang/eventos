@@ -182,7 +182,7 @@ document.getElementById(
 const eventId =
 obtenerEventoID();
 
-if (!id) {
+if (!eventId) {
 
 mostrarError();
 
