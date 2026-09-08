@@ -23,3 +23,32 @@ export const usuariosSupabase =
       }
     }
   );
+
+export const authInicializada =
+  new Promise(
+    (resolve) => {
+
+      const {
+        data: {
+          subscription
+        }
+      } =
+        usuariosSupabase.auth.onAuthStateChange(
+          (event) => {
+
+            if (
+              event ===
+              "INITIAL_SESSION"
+            ) {
+
+              subscription.unsubscribe();
+
+              resolve();
+
+            }
+
+          }
+        );
+
+    }
+  );
