@@ -3,6 +3,7 @@ export const autenticacion = `
 <div
   id="autenticacion"
   class="autenticacion"
+  style="display: none;"
 >
 
   <p
