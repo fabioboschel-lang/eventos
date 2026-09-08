@@ -4,11 +4,11 @@ import {
 
 
 const supabaseUrl =
-  "URL_DEL_NUEVO_PROYECTO";
+  "https://uumcsdpfggtdinhvhvqy.supabase.co";
 
 
 const supabaseKey =
-  "PUBLISHABLE_KEY_DEL_NUEVO_PROYECTO";
+  "sb_publishable_Nlzh5xlBaD12RxYYkex3OQ_XtW7Emig";
 
 
 export const usuariosSupabase =
