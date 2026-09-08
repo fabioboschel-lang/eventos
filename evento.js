@@ -49,7 +49,7 @@ app.innerHTML = `
     id="eventoLoading"  
     class="evento-loading"  
   >  
-    Cargando wc...  
+    Cargando Kaskks...  
   </div>  
 
 
