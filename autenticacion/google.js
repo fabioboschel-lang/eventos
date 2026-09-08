@@ -76,7 +76,7 @@ export function inicializarGoogle() {
         data,
         error
       } =
-        await supabase.auth.signInWithOAuth({
+        await usuariosSupabase.auth.signInWithOAuth({
 
           provider:
             "google",
