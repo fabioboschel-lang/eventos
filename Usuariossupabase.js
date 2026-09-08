@@ -14,5 +14,12 @@ const supabaseKey =
 export const usuariosSupabase =
   createClient(
     supabaseUrl,
-    supabaseKey
+    supabaseKey,
+    {
+      auth: {
+        flowType: "pkce",
+        persistSession: true,
+        detectSessionInUrl: true
+      }
+    }
   );
