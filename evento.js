@@ -191,10 +191,10 @@ return;
 }
 
 const evento =
-await obtenerEvento(id);
+await obtenerEvento(eventId);
   
 const tickets =
-  await obtenerTickets(id);
+  await obtenerTickets(eventId);
 
   
 cargarDatos(evento);
