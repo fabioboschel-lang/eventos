@@ -179,6 +179,9 @@ document.getElementById(
 "eventoContainer"
 );
 
+const userId = obtenerUsuarioID();
+
+
 const eventId =
 obtenerEventoID();
 
