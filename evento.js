@@ -13,7 +13,7 @@ import {
 
 import { cargarDatos } from "./cargardatos.js";
 
-import { inicializarCompra } from "./LOGICbdc.js";
+import { inicializarCompra } from "./BDC/LOGICbdc.js";
 
 import { obtenerUsuarioID } from "./usuarioID.js";
 
@@ -21,7 +21,7 @@ import { supabase } from "./supabase.js";
 
 import { obtenerEventoID } from "./eventoID.js";
 
-import { HTMLbdc } from "./HTMLbdc.js";
+import { HTMLbdc } from "./BDC/HTMLbdc.js";
 
 import { obtenerEvento } from "./eventosDB.js";
 
@@ -53,7 +53,7 @@ app.innerHTML = `
     id="eventoLoading"  
     class="evento-loading"  
   >  
-    Cargando XXX...  
+    Cargando XYZ...  
   </div>  
 
 
