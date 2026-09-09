@@ -193,54 +193,82 @@ comprarBtn.addEventListener(
 
       if (error) {
 
-        throw error;
+  console.error(
+    "Error creando preferencia:",
+    error
+  );
 
-      }
+  if (error.context) {
 
+    try {
 
-      /*
-      ====================================================
-      MOSTRAR RESPUESTA
-      ====================================================
-      */
-
-      console.log(
-        "Preferencia creada:",
-        data
-      );
-
-
-      /*
-      ====================================================
-      REDIRECCIÓN
-      ====================================================
-      */
-
-      if (
-        data &&
-        data.init_point
-      ) {
-
-        window.location.href =
-          data.init_point;
-
-      } else {
-
-        console.error(
-          "Mercado Pago no devolvió init_point."
-        );
-
-      }
-
-
-    } catch (error) {
+      const details =
+        await error.context.json();
 
       console.error(
-        "Error creando preferencia:",
-        error
+        "Respuesta de Mercado Pago:",
+        details
+      );
+
+    } catch (e) {
+
+      console.error(
+        "No se pudo leer el detalle del error:",
+        e
       );
 
     }
+
+  }
+
+  return;
+
+}
+
+
+/*
+====================================================
+MOSTRAR RESPUESTA
+====================================================
+*/
+
+console.log(
+  "Preferencia creada:",
+  data
+);
+
+
+/*
+====================================================
+REDIRECCIÓN
+====================================================
+*/
+
+if (
+  data &&
+  data.init_point
+) {
+
+  window.location.href =
+    data.init_point;
+
+} else {
+
+  console.error(
+    "Mercado Pago no devolvió init_point."
+  );
+
+}
+
+
+} catch (error) {
+
+  console.error(
+    "Error inesperado creando preferencia:",
+    error
+  );
+
+}
 
   }
 );
