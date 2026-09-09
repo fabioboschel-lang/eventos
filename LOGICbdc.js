@@ -170,21 +170,22 @@ comprarBtn.addEventListener(
           {
             body: {
 
-              user_id:
-                userId,
+  user_id:
+    userId,
 
-           evento["ID usuario"],
+  socio_id:
+    evento["ID usuario"],
 
-              event_id:
-                eventId,
+  event_id:
+    eventId,
 
-              tickets:
-                tickets,
+  tickets:
+    tickets,
 
-              total:
-                total
+  total:
+    total
 
-            }
+}
 
           }
         );
