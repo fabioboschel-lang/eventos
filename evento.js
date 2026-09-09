@@ -210,7 +210,7 @@ const tickets =
   
 cargarDatos(evento);
 
-inicializarCompra(  eventId, userId );
+inicializarCompra(  evento, eventId, userId );
 
 inicializarGoogle();
 
