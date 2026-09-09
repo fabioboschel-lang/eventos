@@ -30,7 +30,7 @@ import { cargarSocioStyle } from "./sociostyle.js";
 import {
   obtenerTickets,
   obtenerCantidadesSeleccionadas
-} from "./ticketsDB.js";
+} from "./BDC/ticketsDB.js";
 
 
 /*
