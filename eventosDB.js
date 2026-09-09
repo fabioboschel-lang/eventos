@@ -13,7 +13,8 @@ export async function obtenerEvento(id) {
         nombre,
         imagen,
         descripcion,
-        fecha
+        fecha,
+        ID usuario
       `)
       .eq(
         "id",
