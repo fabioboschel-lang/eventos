@@ -173,6 +173,8 @@ comprarBtn.addEventListener(
               user_id:
                 userId,
 
+           evento["ID usuario"],
+
               event_id:
                 eventId,
 
