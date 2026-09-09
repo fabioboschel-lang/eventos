@@ -53,7 +53,7 @@ app.innerHTML = `
     id="eventoLoading"  
     class="evento-loading"  
   >  
-    Cargando XYZ...  
+    Cargando X...  
   </div>  
 
 
