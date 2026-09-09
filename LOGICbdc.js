@@ -49,156 +49,197 @@ export function inicializarCompra(  evento, eventId, userId ) {
 
   ==========================================================
   */
+comprarBtn.addEventListener(
+  "click",
+  async () => {
 
-  comprarBtn.addEventListener(
-    "click",
-    async () => {
+    /*
+    ======================================================
+    OBTENER ID DEL USUARIO
+    ======================================================
+    */
 
+    if (!userId) {
 
-      /*
-      ======================================================
-      OBTENER ID DEL USUARIO
-      ======================================================
-      */
+      const autenticacion =
+        document.getElementById(
+          "autenticacion"
+        );
 
-      if (!userId) {
+      if (autenticacion) {
 
-  const autenticacion =
-    document.getElementById(
-      "autenticacion"
-    );
+        autenticacion.style.display =
+          "block";
 
-  if (autenticacion) {
+      }
 
-    autenticacion.style.display =
-      "block";
+      return;
 
-  }
-
-  return;
-
-}     
-
-      
+    }
 
 
-      /*
-      ======================================================
-      PRECIO DEL EVENTO
-      ======================================================
-      */
+    /*
+    ======================================================
+    OBTENER CANTIDADES SELECCIONADAS
+    ======================================================
+    */
 
-      const price =
+    const cantidadesSeleccionadas =
+      obtenerCantidadesSeleccionadas();
+
+
+    /*
+    ======================================================
+    TRANSFORMAR DATOS
+    ======================================================
+    */
+
+    const tickets = [];
+
+    let total = 0;
+
+
+    for (
+      const [tipo, datos]
+      of Object.entries(
+        cantidadesSeleccionadas
+      )
+    ) {
+
+      const cantidad =
         Number(
-          evento.valor
+          datos.cantidad
+        );
+
+      const valor =
+        Number(
+          datos.valor
         );
 
 
+      if (
+        !Number.isFinite(cantidad) ||
+        !Number.isFinite(valor) ||
+        cantidad <= 0
+      ) {
+
+        continue;
+
+      }
+
+
+      const subtotal =
+        valor *
+        cantidad;
+
+
+      tickets.push({
+
+        tipo:
+          tipo,
+
+        cantidad:
+          cantidad,
+
+        subtotal:
+          subtotal
+
+      });
+
+
+      total +=
+        subtotal;
+
+    }
+
+
+    /*
+    ======================================================
+    CREAR PREFERENCIA
+    ======================================================
+    */
+
+    try {
+
+      const {
+        data,
+        error
+      } =
+        await supabase.functions.invoke(
+          "create-ticket-payment",
+          {
+            body: {
+
+              user_id:
+                userId,
+
+              event_id:
+                eventId,
+
+              tickets:
+                tickets,
+
+              total:
+                total
+
+            }
+
+          }
+        );
+
+
+      if (error) {
+
+        throw error;
+
+      }
+
+
       /*
-      ======================================================
-      VALIDAR PRECIO
-      ======================================================
+      ====================================================
+      MOSTRAR RESPUESTA
+      ====================================================
+      */
+
+      console.log(
+        "Preferencia creada:",
+        data
+      );
+
+
+      /*
+      ====================================================
+      REDIRECCIÓN
+      ====================================================
       */
 
       if (
-        !Number.isFinite(price) ||
-        price <= 0
+        data &&
+        data.init_point
       ) {
 
-        console.error(
-          "El precio del evento no es válido:",
-          evento.valor
-        );
+        window.location.href =
+          data.init_point;
 
-        return;
+      } else {
+
+        console.error(
+          "Mercado Pago no devolvió init_point."
+        );
 
       }
 
 
-      /*
-      ======================================================
-      CREAR PREFERENCIA
-      ======================================================
-      */
+    } catch (error) {
 
-      try {
-
-        const {
-          data,
-          error
-        } =
-          await supabase.functions.invoke(
-            "create-ticket-payment",
-            {
-              body: {
-
-                user_id:
-                  userId,
-
-                event_id:
-                  eventId,
-
-                price:
-                  price
-
-              }
-
-            }
-          );
-
-
-        if (error) {
-
-          throw error;
-
-        }
-
-
-        /*
-        ====================================================
-        MOSTRAR RESPUESTA
-        ====================================================
-        */
-
-        console.log(
-          "Preferencia creada:",
-          data
-        );
-
-
-        /*
-        ====================================================
-        REDIRECCIÓN
-        ====================================================
-        */
-
-        if (
-          data &&
-          data.init_point
-        ) {
-
-          window.location.href =
-            data.init_point;
-
-        } else {
-
-          console.error(
-            "Mercado Pago no devolvió init_point."
-          );
-
-        }
-
-
-      } catch (error) {
-
-        console.error(
-          "Error creando preferencia:",
-          error
-        );
-
-      }
+      console.error(
+        "Error creando preferencia:",
+        error
+      );
 
     }
-  );
+
+  }
+);
 
 }
