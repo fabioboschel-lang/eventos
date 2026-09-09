@@ -14,7 +14,7 @@ LISTENER DE COMPRA
 */
 
 
-export function inicializarCompra(  eventId, userId ) {
+export function inicializarCompra(  evento, eventId, userId ) {
 
 
   /*
