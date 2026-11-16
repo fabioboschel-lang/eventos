@@ -96,11 +96,11 @@ function aplicarTipografia(tipografia) {
  * ============================================================
  */
 
-function ejecutarPlanilla(numero) {
+function ejecutarPlanilla(identificador) {
 
   const funcionPlanilla =
     planillas[
-      Number(numero)
+      identificador
     ];
 
 
@@ -225,7 +225,7 @@ export async function cargarSocioStyle() {
     estilo.tipografia;
 
 
-  const numeroPlanilla =
+  const identificadorPlanilla =
     estilo.planilla;
 
 
@@ -261,7 +261,7 @@ export async function cargarSocioStyle() {
    */
 
   ejecutarPlanilla(
-    numeroPlanilla
+    identificadorPlanilla
   );
 
 }
