@@ -6,11 +6,11 @@ import { aplicarPlanilla3 } from "./planilla3.js";
 
 export const planillas = {
 
-  1: aplicarPlanilla1,
+  clasica: aplicarPlanilla1,
 
-  2: aplicarPlanilla2,
+  simple: aplicarPlanilla2,
 
-  3: aplicarPlanilla3
+  moderna: aplicarPlanilla3
 
   
 
